@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: apwebsite
+    runtime: static
+    staticPublishPath: .
+    pullRequestPreviewsEnabled: false
