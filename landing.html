@@ -160,6 +160,7 @@
       object-fit: cover;
       z-index: 0;
       opacity: 0.55;
+      will-change: transform;
     }
 
     .hero-video-overlay {
@@ -205,6 +206,7 @@
       letter-spacing: -0.01em;
       text-transform: uppercase;
       margin-bottom: 0;
+      will-change: transform;
     }
 
     .hero-headline .indent {
@@ -221,6 +223,8 @@
       opacity: 0.55;
       margin-top: 1.25rem;
       margin-bottom: 3rem;
+      text-align: right;
+      will-change: transform;
     }
 
     .hero-meta {
@@ -1035,10 +1039,58 @@
         height: 30px;
       }
     }
+
+    /* ─── Custom Cursor (mouse/fine-pointer only) ─── */
+    @media (hover: hover) and (pointer: fine) {
+      body { cursor: none; }
+
+      .cursor-dot,
+      .cursor-ring {
+        position: fixed;
+        top: 0; left: 0;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0;
+        transform: translate(-50%, -50%);
+        transition: opacity 0.3s;
+      }
+
+      .cursor-dot {
+        width: 5px;
+        height: 5px;
+        background: #fff;
+        will-change: transform;
+      }
+
+      .cursor-ring {
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        will-change: transform;
+        transition: opacity 0.3s, width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
+      }
+
+      .cursor-ring.is-hovering {
+        width: 52px;
+        height: 52px;
+        border-color: rgba(255, 255, 255, 0.9);
+      }
+
+      /* Hide native cursor on interactive children */
+      a, button, [role="button"] { cursor: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cursor-dot, .cursor-ring { display: none !important; }
+    }
   </style>
 </head>
 
 <body>
+  <!-- ─── Custom cursor (fine-pointer devices only) ─── -->
+  <div class="cursor-dot"  aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
 
   <!-- ─── NAV ─── -->
   <nav>
@@ -1350,6 +1402,126 @@
     if (!sessionStorage.getItem('ap_preview')) {
       window.location.href = 'index.html';
     }
+  </script>
+
+  <!-- ─── Hero parallax + custom cursor ─── -->
+  <script>
+  (function () {
+    // Bail on reduced-motion or coarse-pointer (touch-only) devices
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const coarsePointer = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+    const hero     = document.getElementById('hero');
+    const video    = hero.querySelector('.hero-video');
+    const headline = hero.querySelector('.hero-headline');
+    const estTag   = hero.querySelector('.hero-est');
+    const eyebrow  = hero.querySelector('.hero-eyebrow');
+    const dot      = document.querySelector('.cursor-dot');
+    const ring     = document.querySelector('.cursor-ring');
+
+    /* ── Lerp helper ── */
+    const lerp = (a, b, t) => a + (b - a) * t;
+
+    /* ── Parallax state ── */
+    let tpx = 0, tpy = 0; // target
+    let px  = 0, py  = 0; // current (lerped)
+
+    /* ── Cursor state ── */
+    let mx = 0, my = 0;   // raw mouse
+    let dx = 0, dy = 0;   // dot (fast)
+    let rx = 0, ry = 0;   // ring (slow)
+    let cursorVisible = false;
+
+    /* ── Parallax: mouse ── */
+    if (!reducedMotion) {
+      hero.addEventListener('mousemove', function (e) {
+        const r  = hero.getBoundingClientRect();
+        const nx = ((e.clientX - r.left)  / r.width  - 0.5) * 2;
+        const ny = ((e.clientY - r.top)   / r.height - 0.5) * 2;
+        tpx = nx * 14;
+        tpy = ny * 9;
+      }, { passive: true });
+
+      hero.addEventListener('mouseleave', function () {
+        tpx = tpy = 0;
+      });
+
+      /* Parallax: touch */
+      hero.addEventListener('touchmove', function (e) {
+        const touch = e.touches[0];
+        const r  = hero.getBoundingClientRect();
+        const nx = ((touch.clientX - r.left)  / r.width  - 0.5) * 2;
+        const ny = ((touch.clientY - r.top)   / r.height - 0.5) * 2;
+        tpx = nx * 7;
+        tpy = ny * 5;
+      }, { passive: true });
+
+      hero.addEventListener('touchend', function () {
+        tpx = tpy = 0;
+      }, { passive: true });
+    }
+
+    /* ── Custom cursor: track mouse globally ── */
+    if (!coarsePointer) {
+      document.addEventListener('mousemove', function (e) {
+        mx = e.clientX;
+        my = e.clientY;
+        if (!cursorVisible) {
+          // Snap on first move to avoid flying-in from 0,0
+          dx = rx = mx;
+          dy = ry = my;
+          dot.style.opacity  = '1';
+          ring.style.opacity = '1';
+          cursorVisible = true;
+        }
+      }, { passive: true });
+
+      /* Expand ring on interactive elements */
+      document.querySelectorAll('a, button, [role="button"]').forEach(function (el) {
+        el.addEventListener('mouseenter', function () { ring.classList.add('is-hovering'); });
+        el.addEventListener('mouseleave', function () { ring.classList.remove('is-hovering'); });
+      });
+    }
+
+    /* ── RAF loop ── */
+    function tick() {
+      requestAnimationFrame(tick);
+
+      /* Parallax */
+      if (!reducedMotion) {
+        px = lerp(px, tpx, 0.055);
+        py = lerp(py, tpy, 0.055);
+
+        // Video moves opposite — scale(1.06) gives headroom so edges never show
+        video.style.transform =
+          'scale(1.06) translate(' + (-px).toFixed(2) + 'px, ' + (-py).toFixed(2) + 'px)';
+
+        // Foreground text moves with the cursor at a slower rate
+        const tx = (px * 0.28).toFixed(2);
+        const ty = (py * 0.28).toFixed(2);
+        const tf = 'translate(' + tx + 'px, ' + ty + 'px)';
+        headline.style.transform = tf;
+        if (estTag)   estTag.style.transform   = tf;
+        if (eyebrow)  eyebrow.style.transform  =
+          'translate(' + (px * 0.18).toFixed(2) + 'px, ' + (py * 0.18).toFixed(2) + 'px)';
+      }
+
+      /* Custom cursor */
+      if (!coarsePointer && cursorVisible) {
+        dx = lerp(dx, mx, 0.88);
+        dy = lerp(dy, my, 0.88);
+        rx = lerp(rx, mx, 0.10);
+        ry = lerp(ry, my, 0.10);
+
+        dot.style.left  = dx.toFixed(1) + 'px';
+        dot.style.top   = dy.toFixed(1) + 'px';
+        ring.style.left = rx.toFixed(1) + 'px';
+        ring.style.top  = ry.toFixed(1) + 'px';
+      }
+    }
+
+    requestAnimationFrame(tick);
+  }());
   </script>
 
 </body>
