@@ -747,27 +747,115 @@
       opacity: 0.15;
     }
 
-    .contact-link {
+    .contact-form {
+      width: 100%;
+      max-width: 640px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+
+    .form-input,
+    .form-textarea,
+    .form-select {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+      padding: 0.85rem 1rem;
+      outline: none;
+      width: 100%;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus,
+    .form-select:focus {
+      border-color: rgba(255,255,255,0.6);
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      opacity: 0.25;
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .form-select {
+      cursor: pointer;
+    }
+
+    .form-select option {
+      background: #111;
+      color: var(--white);
+    }
+
+    .form-submit {
       display: inline-flex;
       align-items: center;
       gap: 1rem;
       color: var(--black);
       background: var(--white);
-      text-decoration: none;
-      padding: 1.1rem 2rem;
+      border: none;
+      cursor: pointer;
+      font-family: 'IBM Plex Mono', monospace;
       font-size: 0.7rem;
       font-weight: 700;
       letter-spacing: 0.25em;
       text-transform: uppercase;
+      padding: 1.1rem 2rem;
       transition: opacity 0.2s;
+      align-self: flex-start;
     }
 
-    .contact-link:hover {
-      opacity: 0.85;
+    .form-submit:hover { opacity: 0.85; }
+    .form-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .form-status {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.85rem 1rem;
+      border: 1px solid;
+      display: none;
     }
 
-    .contact-link-arrow {
-      font-size: 1rem;
+    .form-status.success {
+      border-color: rgba(255,255,255,0.3);
+      color: var(--white);
+      opacity: 0.7;
+    }
+
+    .form-status.error {
+      border-color: #ff4444;
+      color: #ff4444;
     }
 
     /* ─── FOOTER ─── */
@@ -956,6 +1044,10 @@
 
       .nav-logo img {
         height: 30px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -1328,10 +1420,57 @@
         <span class="muted">Something</span><br />
         Authoritative.
       </h2>
-      <a href="mailto:jaron@authoritativeproductions.com" class="contact-link">
-        <span>Get In Touch</span>
-        <span class="contact-link-arrow">→</span>
-      </a>
+      <form
+        class="contact-form"
+        id="contact-form"
+        action="https://formspree.io/f/YOUR_FORM_ID"
+        method="POST"
+        novalidate
+      >
+        <!-- Formspree spam honeypot -->
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+        <input type="hidden" name="_subject" value="New inquiry — Authoritative Productions" />
+
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label" for="cf-name">Name *</label>
+            <input class="form-input" type="text" id="cf-name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="cf-email">Email *</label>
+            <input class="form-input" type="email" id="cf-email" name="email" placeholder="your@email.com" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label" for="cf-company">Company</label>
+            <input class="form-input" type="text" id="cf-company" name="company" placeholder="Optional" />
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="cf-service">Service</label>
+            <select class="form-select" id="cf-service" name="service">
+              <option value="" disabled selected>Select a service</option>
+              <option value="Brand Film">Brand Film</option>
+              <option value="Corporate Video &amp; Events">Corporate Video &amp; Events</option>
+              <option value="AI Avatar Campaigns">AI Avatar Campaigns</option>
+              <option value="Real Estate AI Staging">Real Estate AI Staging</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="cf-message">Message *</label>
+          <textarea class="form-textarea" id="cf-message" name="message" placeholder="Tell us about your project..." required></textarea>
+        </div>
+
+        <div class="form-status" id="cf-status" role="status" aria-live="polite"></div>
+
+        <button class="form-submit" type="submit" id="cf-submit">
+          Send Message <span aria-hidden="true">→</span>
+        </button>
+      </form>
     </div>
   </section>
 
@@ -1564,6 +1703,51 @@
         document.querySelectorAll('.portfolio-card.is-active').forEach(deactivateCard);
         if (!isAlreadyActive) activateCard(card);
       }, { passive: false });
+    });
+  }());
+  </script>
+
+  <!-- ─── Contact form ─── -->
+  <script>
+  (function () {
+    var form   = document.getElementById('contact-form');
+    var status = document.getElementById('cf-status');
+    var submit = document.getElementById('cf-submit');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      submit.disabled    = true;
+      submit.textContent = 'Sending\u2026';
+      status.style.display = 'none';
+      status.className     = 'form-status';
+
+      fetch(form.action, {
+        method:  'POST',
+        body:    new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(function (res) {
+        if (res.ok) {
+          status.textContent   = 'Message sent \u2014 we\u2019ll be in touch shortly.';
+          status.className     = 'form-status success';
+          status.style.display = 'block';
+          form.reset();
+        } else {
+          return res.json().then(function (data) {
+            throw new Error(data.error || 'Submission failed');
+          });
+        }
+      })
+      .catch(function () {
+        status.textContent   = 'Something went wrong. Please email us directly at jaron@authoritativeproductions.com';
+        status.className     = 'form-status error';
+        status.style.display = 'block';
+      })
+      .finally(function () {
+        submit.disabled   = false;
+        submit.innerHTML  = 'Send Message <span aria-hidden="true">\u2192</span>';
+      });
     });
   }());
   </script>
