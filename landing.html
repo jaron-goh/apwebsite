@@ -1465,6 +1465,19 @@
     /* ── Lerp helper ── */
     const lerp = (a, b, t) => a + (b - a) * t;
 
+    /* ── Mobile video offset — shifts logo into upper third on small screens ── */
+    function getMobileVideoParams() {
+      const mobile = window.innerWidth <= 900;
+      return {
+        scale:   mobile ? 1.28 : 1.06,
+        // Pre-scale translate: divide desired screen-px shift by scale
+        // Target: ~110px upward in screen space → 110/1.28 ≈ 86px in local coords
+        baseY:   mobile ? -86 : 0
+      };
+    }
+    let vp = getMobileVideoParams();
+    window.addEventListener('resize', function () { vp = getMobileVideoParams(); }, { passive: true });
+
     /* ── Parallax state ── */
     let tpx = 0, tpy = 0; // target
     let px  = 0, py  = 0; // current (lerped)
@@ -1535,9 +1548,9 @@
         px = lerp(px, tpx, 0.055);
         py = lerp(py, tpy, 0.055);
 
-        // Video moves opposite — scale(1.06) gives headroom so edges never show
+        // Video moves opposite — scale gives headroom; baseY shifts logo up on mobile
         video.style.transform =
-          'scale(1.06) translate(' + (-px).toFixed(2) + 'px, ' + (-py).toFixed(2) + 'px)';
+          'scale(' + vp.scale + ') translate(' + (-px).toFixed(2) + 'px, ' + (-py + vp.baseY).toFixed(2) + 'px)';
 
         // Foreground text moves with the cursor at a slower rate
         const tx = (px * 0.28).toFixed(2);
