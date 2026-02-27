@@ -146,8 +146,43 @@
       flex-direction: column;
       justify-content: flex-end;
       padding: 2rem 3rem 4rem;
+      overflow: hidden;
       padding-top: 80px;
       border-bottom: 1px solid var(--dim);
+    }
+
+    /* Hero video */
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      opacity: 0.35;
+    }
+
+    .hero-video-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.3) 0%,
+        rgba(0,0,0,0.2) 40%,
+        rgba(0,0,0,0.75) 100%
+      );
+      z-index: 1;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-video { display: none; }
+    }
+
+    .hero-eyebrow,
+    .hero-headline,
+    .hero-meta {
+      position: relative;
+      z-index: 2;
     }
 
     .hero-eyebrow {
@@ -851,12 +886,29 @@
         padding-right: 1.5rem;
       }
 
+      #hero {
+        padding-bottom: 3rem;
+      }
+
       .hero-headline {
         font-size: clamp(3.5rem, 15vw, 6rem);
       }
 
       .hero-headline .indent {
         padding-left: 1rem;
+      }
+
+      .hero-tagline {
+        font-size: 0.65rem;
+        line-height: 1.9;
+      }
+
+      .services-title,
+      .work-title,
+      .clients-title,
+      .ip-title,
+      .about-title {
+        font-size: clamp(2.5rem, 8vw, 4rem);
       }
 
       .services-grid {
@@ -870,6 +922,10 @@
         padding-right: 0 !important;
       }
 
+      .service-item:last-child {
+        border-bottom: none;
+      }
+
       .portfolio-grid {
         grid-template-columns: 1fr 1fr;
       }
@@ -878,26 +934,39 @@
         grid-template-columns: 1fr 1fr;
       }
 
-      .ip-grid {
-        grid-template-columns: 1fr;
-      }
-
       #about .section-inner {
         grid-template-columns: 1fr;
         gap: 3rem;
       }
 
+      .about-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .contact-title {
+        font-size: clamp(3rem, 10vw, 6rem);
+      }
+
       footer {
         padding: 1.5rem;
         flex-direction: column;
-        gap: 0.5rem;
-        text-align: center;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+
+      .section-inner {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
       }
     }
 
     @media (max-width: 600px) {
       .portfolio-grid {
         grid-template-columns: 1fr;
+      }
+
+      .portfolio-card {
+        aspect-ratio: 16 / 9;
       }
 
       .clients-grid {
@@ -907,6 +976,39 @@
       .hero-meta {
         flex-direction: column;
         align-items: flex-start;
+        gap: 1.5rem;
+      }
+
+      .hero-scroll {
+        flex-direction: row;
+        writing-mode: horizontal-tb;
+        gap: 0.75rem;
+      }
+
+      .hero-scroll-line {
+        width: 30px;
+        height: 1px;
+      }
+
+      .hero-scroll-label {
+        writing-mode: horizontal-tb;
+      }
+
+      .about-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+
+      .contact-title {
+        font-size: clamp(2.5rem, 12vw, 5rem);
+      }
+
+      nav {
+        padding: 0.9rem 1.25rem;
+      }
+
+      .nav-logo img {
+        height: 30px;
       }
     }
   </style>
@@ -930,6 +1032,11 @@
 
   <!-- ─── HERO ─── -->
   <section id="hero">
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+      <source src="BRAND ASSETS/hero1.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-video-overlay" aria-hidden="true"></div>
+
     <div class="hero-eyebrow">
       <div class="hero-eyebrow-line"></div>
       <span class="label">AI Creative Studio &nbsp;·&nbsp; Singapore</span>
