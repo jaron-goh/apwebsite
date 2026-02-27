@@ -1528,13 +1528,18 @@
     requestAnimationFrame(tick);
   }());
 
-  /* ── Nav: transparent → glass on scroll ── */
+  /* ── Nav: glass on scroll (desktop only; mobile always transparent) ── */
   (function () {
     const nav = document.querySelector('nav');
     function update() {
-      nav.classList.toggle('nav--scrolled', window.scrollY > 40);
+      if (window.innerWidth <= 900) {
+        nav.classList.remove('nav--scrolled');
+      } else {
+        nav.classList.toggle('nav--scrolled', window.scrollY > 40);
+      }
     }
     window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
     update();
   }());
   </script>
