@@ -26,7 +26,11 @@
       color: var(--white);
       font-family: 'IBM Plex Mono', monospace;
       overflow-x: hidden;
+      touch-action: none; /* let JS own all touch gestures for parallax */
     }
+
+    /* Re-enable native touch on interactive elements */
+    input, button, a { touch-action: auto; }
 
     body {
       display: flex;
@@ -396,12 +400,13 @@
       }, { passive: true });
 
       document.addEventListener('touchmove', function (e) {
+        e.preventDefault(); // stop browser scroll from consuming the gesture
         const t = e.touches[0];
         const nx = (t.clientX / window.innerWidth  - 0.5) * 2;
         const ny = (t.clientY / window.innerHeight - 0.5) * 2;
-        tpx = nx * 7;
-        tpy = ny * 5;
-      }, { passive: true });
+        tpx = nx * 10;
+        tpy = ny * 7;
+      }, { passive: false });
 
       document.addEventListener('touchend', function () {
         tpx = tpy = 0;
