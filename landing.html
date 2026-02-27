@@ -457,11 +457,11 @@
       min-width: 0;
     }
 
-    .portfolio-grid:has(.portfolio-card:hover) .portfolio-card {
+    .portfolio-grid.has-hover .portfolio-card {
       flex: 0.35;
     }
 
-    .portfolio-grid .portfolio-card:hover {
+    .portfolio-grid.has-hover .portfolio-card.is-active {
       flex: 5;
     }
 
@@ -1613,23 +1613,31 @@
   }());
   </script>
 
-  <!-- ─── Portfolio accordion: play video on hover ─── -->
+  <!-- ─── Portfolio accordion: expand on hover + play video ─── -->
   <script>
   (function () {
+    var grid = document.querySelector('.portfolio-grid');
+    if (!grid) return;
+
     document.querySelectorAll('.portfolio-card').forEach(function (card) {
       var vid = card.querySelector('.card-video');
-      if (!vid) return;
-      var src = vid.querySelector('source');
+      var src = vid && vid.querySelector('source');
 
       card.addEventListener('mouseenter', function () {
+        grid.classList.add('has-hover');
+        card.classList.add('is-active');
         if (src && src.getAttribute('src')) {
           vid.play().catch(function () {});
         }
       });
 
       card.addEventListener('mouseleave', function () {
-        vid.pause();
-        vid.currentTime = 0;
+        grid.classList.remove('has-hover');
+        card.classList.remove('is-active');
+        if (vid) {
+          vid.pause();
+          vid.currentTime = 0;
+        }
       });
     });
   }());
