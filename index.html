@@ -49,6 +49,7 @@
       height: 100%;
       object-fit: cover;
       opacity: 0.72;
+      will-change: transform;
     }
 
     .video-overlay {
@@ -86,6 +87,7 @@
     .headline-block {
       position: relative;
       z-index: 1;
+      will-change: transform;
     }
 
     /* ─── Top Bar ─── */
@@ -263,9 +265,56 @@
       .headline { font-size: clamp(3.2rem, 20vw, 5rem); }
       #preview-pass { width: 130px; }
     }
+
+    /* ─── Custom Cursor (mouse/fine-pointer only) ─── */
+    @media (hover: hover) and (pointer: fine) {
+      body { cursor: none; }
+
+      .cursor-dot,
+      .cursor-ring {
+        position: fixed;
+        top: 0; left: 0;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0;
+        transform: translate(-50%, -50%);
+        transition: opacity 0.3s;
+      }
+
+      .cursor-dot {
+        width: 5px;
+        height: 5px;
+        background: #fff;
+        will-change: transform;
+      }
+
+      .cursor-ring {
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        will-change: transform;
+        transition: opacity 0.3s, width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
+      }
+
+      .cursor-ring.is-hovering {
+        width: 52px;
+        height: 52px;
+        border-color: rgba(255, 255, 255, 0.9);
+      }
+
+      a, button, [role="button"] { cursor: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cursor-dot, .cursor-ring { display: none !important; }
+    }
   </style>
 </head>
 <body>
+  <!-- ─── Custom cursor ─── -->
+  <div class="cursor-dot"  aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
 
   <!-- Top Bar -->
   <header class="topbar">
@@ -320,6 +369,93 @@
     <span class="footer-copy">&copy; 2026 Authoritative Productions</span>
     <span class="footer-right">AP&nbsp;&mdash;&nbsp;Est. 2025</span>
   </footer>
+
+  <!-- ─── Parallax + custom cursor ─── -->
+  <script>
+  (function () {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const coarsePointer = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+    const video    = document.querySelector('.video-bg');
+    const headline = document.querySelector('.headline-block');
+    const dot      = document.querySelector('.cursor-dot');
+    const ring     = document.querySelector('.cursor-ring');
+
+    const lerp = (a, b, t) => a + (b - a) * t;
+
+    let tpx = 0, tpy = 0, px = 0, py = 0;
+    let mx = 0, my = 0, dx = 0, dy = 0, rx = 0, ry = 0;
+    let cursorVisible = false;
+
+    if (!reducedMotion) {
+      document.addEventListener('mousemove', function (e) {
+        const nx = (e.clientX / window.innerWidth  - 0.5) * 2;
+        const ny = (e.clientY / window.innerHeight - 0.5) * 2;
+        tpx = nx * 14;
+        tpy = ny * 9;
+      }, { passive: true });
+
+      document.addEventListener('touchmove', function (e) {
+        const t = e.touches[0];
+        const nx = (t.clientX / window.innerWidth  - 0.5) * 2;
+        const ny = (t.clientY / window.innerHeight - 0.5) * 2;
+        tpx = nx * 7;
+        tpy = ny * 5;
+      }, { passive: true });
+
+      document.addEventListener('touchend', function () {
+        tpx = tpy = 0;
+      }, { passive: true });
+    }
+
+    if (!coarsePointer) {
+      document.addEventListener('mousemove', function (e) {
+        mx = e.clientX;
+        my = e.clientY;
+        if (!cursorVisible) {
+          dx = rx = mx;
+          dy = ry = my;
+          dot.style.opacity  = '1';
+          ring.style.opacity = '1';
+          cursorVisible = true;
+        }
+      }, { passive: true });
+
+      document.querySelectorAll('a, button, [role="button"]').forEach(function (el) {
+        el.addEventListener('mouseenter', function () { ring.classList.add('is-hovering'); });
+        el.addEventListener('mouseleave', function () { ring.classList.remove('is-hovering'); });
+      });
+    }
+
+    function tick() {
+      requestAnimationFrame(tick);
+
+      if (!reducedMotion) {
+        px = lerp(px, tpx, 0.055);
+        py = lerp(py, tpy, 0.055);
+
+        video.style.transform =
+          'scale(1.06) translate(' + (-px).toFixed(2) + 'px, ' + (-py).toFixed(2) + 'px)';
+        headline.style.transform =
+          'translate(' + (px * 0.28).toFixed(2) + 'px, ' + (py * 0.28).toFixed(2) + 'px)';
+      }
+
+      if (!coarsePointer && cursorVisible) {
+        dx = lerp(dx, mx, 0.88);
+        dy = lerp(dy, my, 0.88);
+        rx = lerp(rx, mx, 0.10);
+        ry = lerp(ry, my, 0.10);
+
+        dot.style.left  = dx.toFixed(1) + 'px';
+        dot.style.top   = dy.toFixed(1) + 'px';
+        ring.style.left = rx.toFixed(1) + 'px';
+        ring.style.top  = ry.toFixed(1) + 'px';
+      }
+    }
+
+    requestAnimationFrame(tick);
+  }());
+  </script>
 
   <script>
     document.getElementById('preview-form').addEventListener('submit', function (e) {
