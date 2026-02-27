@@ -1579,6 +1579,28 @@
     requestAnimationFrame(tick);
   }());
 
+  /* ── Align "Est. 2025" right edge to match the headline text right edge ── */
+  (function () {
+    const hero    = document.getElementById('hero');
+    const line2   = hero.querySelector('.hero-headline .line-2');
+    const estTag  = hero.querySelector('.hero-est');
+    if (!line2 || !estTag) return;
+
+    function align() {
+      const textRight = line2.getBoundingClientRect().right;
+      const heroRight = hero.getBoundingClientRect().right;
+      estTag.style.paddingRight = Math.max(0, heroRight - textRight) + 'px';
+    }
+
+    // Run after web fonts are rendered for accurate metrics
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(align);
+    } else {
+      align();
+    }
+    window.addEventListener('resize', align, { passive: true });
+  }());
+
   /* ── Nav: glass on scroll (desktop only; mobile always transparent) ── */
   (function () {
     const nav = document.querySelector('nav');
