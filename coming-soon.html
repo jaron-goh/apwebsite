@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Authoritative Productions</title>
+  <link rel="icon" type="image/png" href="BRAND ASSETS/LOGO3BLK.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+    }
+
+    html, body {
+      height: 100%;
+      background-color: var(--black);
+      color: var(--white);
+      font-family: 'IBM Plex Mono', monospace;
+      overflow-x: hidden;
+      touch-action: none; /* let JS own all touch gestures for parallax */
+    }
+
+    /* Re-enable native touch on interactive elements */
+    input, button, a { touch-action: auto; }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ─── Video Background ─── */
+    .video-bg-wrap {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .video-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.72;
+      will-change: transform;
+    }
+
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.15) 0%,
+        rgba(0,0,0,0.08) 50%,
+        rgba(0,0,0,0.35) 100%
+      );
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .video-bg { display: none; }
+    }
+
+    /* ─── Noise overlay ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.04;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ─── Page Content ─── */
+    .topbar, .main, .footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    .headline-block {
+      position: relative;
+      z-index: 1;
+      will-change: transform;
+    }
+
+    /* ─── Top Bar ─── */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.75rem 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .logo-wrap img {
+      height: 44px;
+      width: auto;
+      display: block;
+    }
+
+    .topbar-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      opacity: 0.4;
+    }
+
+    /* ─── Main Content ─── */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem 3rem;
+      overflow: hidden;
+    }
+
+    .pre-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-bottom: 1.5rem;
+    }
+
+    .headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 16vw, 14rem);
+      line-height: 0.9;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .headline .line-break { display: block; }
+
+    .cursor {
+      display: inline-block;
+      width: 0.08em;
+      height: 0.85em;
+      background: var(--white);
+      vertical-align: bottom;
+      margin-left: 0.06em;
+      animation: blink 1s step-start infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      margin: 3rem 0;
+    }
+
+    .sub-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.4;
+      max-width: 36rem;
+      line-height: 1.8;
+    }
+
+    /* ─── Preview Gate ─── */
+    .preview-gate {
+      margin-top: 2.5rem;
+      display: inline-block;
+    }
+
+    #preview-form {
+      display: flex;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    #preview-pass {
+      background: transparent;
+      border: none;
+      color: var(--white);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.7rem 1rem;
+      outline: none;
+      width: 160px;
+      -webkit-appearance: none;
+    }
+
+    #preview-pass::placeholder { opacity: 0.3; }
+
+    #preview-form button {
+      background: var(--white);
+      border: none;
+      color: var(--black);
+      cursor: pointer;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 0.7rem 1.1rem;
+      transition: opacity 0.2s;
+      /* larger tap target on mobile */
+      min-width: 44px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #preview-form button:hover { opacity: 0.8; }
+
+    /* ─── Footer ─── */
+    .footer {
+      padding: 1.75rem 3rem;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      opacity: 0.35;
+    }
+
+    .footer-copy,
+    .footer-right {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 768px) {
+      .topbar,
+      .main,
+      .footer {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+
+      .topbar { padding-top: 1.25rem; padding-bottom: 1.25rem; }
+      .logo-wrap img { height: 36px; }
+
+      .headline { font-size: clamp(3.8rem, 18vw, 7rem); }
+
+      .divider { margin: 2rem 0; }
+
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .headline { font-size: clamp(3.2rem, 20vw, 5rem); }
+      #preview-pass { width: 130px; }
+    }
+
+    /* ─── Custom Cursor (mouse/fine-pointer only) ─── */
+    @media (hover: hover) and (pointer: fine) {
+      body { cursor: none; }
+
+      .cursor-dot,
+      .cursor-ring {
+        position: fixed;
+        top: 0; left: 0;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0;
+        transform: translate(-50%, -50%);
+        transition: opacity 0.3s;
+      }
+
+      .cursor-dot {
+        width: 5px;
+        height: 5px;
+        background: #fff;
+        will-change: transform;
+      }
+
+      .cursor-ring {
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        will-change: transform;
+        transition: opacity 0.3s, width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
+      }
+
+      .cursor-ring.is-hovering {
+        width: 52px;
+        height: 52px;
+        border-color: rgba(255, 255, 255, 0.9);
+      }
+
+      a, button, [role="button"] { cursor: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cursor-dot, .cursor-ring { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ─── Custom cursor ─── -->
+  <div class="cursor-dot"  aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <div class="logo-wrap">
+      <img src="BRAND ASSETS/LOGO3BLK.png" alt="Authoritative Productions" />
+    </div>
+    <span class="topbar-label">Media Production</span>
+  </header>
+
+  <!-- Main -->
+  <main class="main">
+
+    <!-- Video Background -->
+    <div class="video-bg-wrap" aria-hidden="true">
+      <video class="video-bg" autoplay muted loop playsinline preload="metadata">
+        <source src="BRAND%20ASSETS/Hero2_web.mp4"    media="(min-width: 768px)" type="video/mp4" />
+        <source src="BRAND%20ASSETS/Hero2_mobile.mp4" type="video/mp4" />
+      </video>
+      <div class="video-overlay"></div>
+    </div>
+
+    <div class="headline-block">
+      <p class="pre-label">// Status: Pre-launch</p>
+      <span class="headline">
+        <span class="line-break">Coming</span>
+        <span class="line-break">Soon<span class="cursor"></span></span>
+      </span>
+      <hr class="divider" />
+      <p class="sub-label">
+        Something authoritative is being built.<br />
+        Check back soon.
+      </p>
+
+      <!-- Preview Gate -->
+      <div class="preview-gate" aria-label="Preview access">
+        <form id="preview-form" autocomplete="off">
+          <input
+            type="password"
+            id="preview-pass"
+            placeholder="Preview Access"
+            aria-label="Preview password"
+            spellcheck="false"
+          />
+          <button type="submit" aria-label="Enter">→</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <span class="footer-copy">&copy; 2026 Authoritative Productions</span>
+    <span class="footer-right">AP&nbsp;&mdash;&nbsp;Est. 2025</span>
+  </footer>
+
+  <!-- ─── Parallax + custom cursor ─── -->
+  <script>
+  (function () {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const coarsePointer = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+    const video    = document.querySelector('.video-bg');
+    const headline = document.querySelector('.headline-block');
+    const dot      = document.querySelector('.cursor-dot');
+    const ring     = document.querySelector('.cursor-ring');
+
+    const lerp = (a, b, t) => a + (b - a) * t;
+
+    let tpx = 0, tpy = 0, px = 0, py = 0;
+    let mx = 0, my = 0, dx = 0, dy = 0, rx = 0, ry = 0;
+    let cursorVisible = false;
+
+    if (!reducedMotion) {
+      document.addEventListener('mousemove', function (e) {
+        const nx = (e.clientX / window.innerWidth  - 0.5) * 2;
+        const ny = (e.clientY / window.innerHeight - 0.5) * 2;
+        tpx = nx * 14;
+        tpy = ny * 9;
+      }, { passive: true });
+
+      document.addEventListener('touchmove', function (e) {
+        e.preventDefault(); // stop browser scroll from consuming the gesture
+        const t = e.touches[0];
+        const nx = (t.clientX / window.innerWidth  - 0.5) * 2;
+        const ny = (t.clientY / window.innerHeight - 0.5) * 2;
+        tpx = nx * 10;
+        tpy = ny * 7;
+      }, { passive: false });
+
+      document.addEventListener('touchend', function () {
+        tpx = tpy = 0;
+      }, { passive: true });
+    }
+
+    if (!coarsePointer) {
+      document.addEventListener('mousemove', function (e) {
+        mx = e.clientX;
+        my = e.clientY;
+        if (!cursorVisible) {
+          dx = rx = mx;
+          dy = ry = my;
+          dot.style.opacity  = '1';
+          ring.style.opacity = '1';
+          cursorVisible = true;
+        }
+      }, { passive: true });
+
+      document.querySelectorAll('a, button, [role="button"]').forEach(function (el) {
+        el.addEventListener('mouseenter', function () { ring.classList.add('is-hovering'); });
+        el.addEventListener('mouseleave', function () { ring.classList.remove('is-hovering'); });
+      });
+    }
+
+    function tick() {
+      requestAnimationFrame(tick);
+
+      if (!reducedMotion) {
+        px = lerp(px, tpx, 0.055);
+        py = lerp(py, tpy, 0.055);
+
+        video.style.transform =
+          'scale(1.06) translate(' + (-px).toFixed(2) + 'px, ' + (-py).toFixed(2) + 'px)';
+        headline.style.transform =
+          'translate(' + (px * 0.28).toFixed(2) + 'px, ' + (py * 0.28).toFixed(2) + 'px)';
+      }
+
+      if (!coarsePointer && cursorVisible) {
+        dx = lerp(dx, mx, 0.88);
+        dy = lerp(dy, my, 0.88);
+        rx = lerp(rx, mx, 0.10);
+        ry = lerp(ry, my, 0.10);
+
+        dot.style.left  = dx.toFixed(1) + 'px';
+        dot.style.top   = dy.toFixed(1) + 'px';
+        ring.style.left = rx.toFixed(1) + 'px';
+        ring.style.top  = ry.toFixed(1) + 'px';
+      }
+    }
+
+    requestAnimationFrame(tick);
+  }());
+  </script>
+
+  <script>
+    document.getElementById('preview-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var input = document.getElementById('preview-pass');
+      if (input.value === 'AP2026') {
+        sessionStorage.setItem('ap_preview', '1');
+        window.location.href = 'landing.html';
+      } else {
+        input.style.color = '#ff4444';
+        input.value = '';
+        input.placeholder = 'Incorrect';
+        setTimeout(function () {
+          input.style.color = '';
+          input.placeholder = 'Preview Access';
+        }, 2000);
+      }
+    });
+  </script>
+
+</body>
+</html>
