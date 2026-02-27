@@ -36,7 +36,7 @@
 
     /* ─── Video Background ─── */
     .video-bg-wrap {
-      position: fixed;
+      position: absolute;
       inset: 0;
       z-index: 0;
       pointer-events: none;
@@ -48,7 +48,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.55;
+      opacity: 0.72;
     }
 
     .video-overlay {
@@ -56,9 +56,9 @@
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(0,0,0,0.25) 0%,
-        rgba(0,0,0,0.15) 50%,
-        rgba(0,0,0,0.45) 100%
+        rgba(0,0,0,0.15) 0%,
+        rgba(0,0,0,0.08) 50%,
+        rgba(0,0,0,0.35) 100%
       );
     }
 
@@ -79,6 +79,11 @@
 
     /* ─── Page Content ─── */
     .topbar, .main, .footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    .headline-block {
       position: relative;
       z-index: 1;
     }
@@ -113,6 +118,7 @@
       flex-direction: column;
       justify-content: center;
       padding: 4rem 3rem;
+      overflow: hidden;
     }
 
     .pre-label {
@@ -261,15 +267,6 @@
 </head>
 <body>
 
-  <!-- Video Background -->
-  <div class="video-bg-wrap" aria-hidden="true">
-    <video class="video-bg" autoplay muted loop playsinline preload="metadata">
-      <source src="BRAND%20ASSETS/Hero1_web.mp4"    media="(min-width: 768px)" type="video/mp4" />
-      <source src="BRAND%20ASSETS/Hero1_mobile.mp4" type="video/mp4" />
-    </video>
-    <div class="video-overlay"></div>
-  </div>
-
   <!-- Top Bar -->
   <header class="topbar">
     <div class="logo-wrap">
@@ -280,6 +277,16 @@
 
   <!-- Main -->
   <main class="main">
+
+    <!-- Video Background -->
+    <div class="video-bg-wrap" aria-hidden="true">
+      <video class="video-bg" autoplay muted loop playsinline preload="metadata">
+        <source src="BRAND%20ASSETS/Hero1_web.mp4"    media="(min-width: 768px)" type="video/mp4" />
+        <source src="BRAND%20ASSETS/Hero1_mobile.mp4" type="video/mp4" />
+      </video>
+      <div class="video-overlay"></div>
+    </div>
+
     <div class="headline-block">
       <p class="pre-label">// Status: Pre-launch</p>
       <span class="headline">
