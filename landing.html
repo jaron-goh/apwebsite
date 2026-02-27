@@ -471,7 +471,8 @@
       transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .portfolio-card:hover .card-bg {
+    .portfolio-card:hover .card-bg,
+    .portfolio-card.is-active .card-bg {
       transform: scale(1.04);
     }
 
@@ -513,7 +514,8 @@
       transition: opacity 0.5s 0.15s;
     }
 
-    .portfolio-card:hover .card-video {
+    .portfolio-card:hover .card-video,
+    .portfolio-card.is-active .card-video {
       opacity: 1;
     }
 
@@ -526,7 +528,8 @@
       pointer-events: none;
     }
 
-    .portfolio-card:hover .card-gradient {
+    .portfolio-card:hover .card-gradient,
+    .portfolio-card.is-active .card-gradient {
       opacity: 1;
     }
 
@@ -545,7 +548,8 @@
       transition: opacity 0.35s 0.1s, transform 0.35s 0.1s;
     }
 
-    .portfolio-card:hover .card-label {
+    .portfolio-card:hover .card-label,
+    .portfolio-card.is-active .card-label {
       opacity: 1;
       transform: translateY(0);
     }
@@ -588,7 +592,8 @@
       transition: opacity 0.3s 0.2s, transform 0.3s 0.2s;
     }
 
-    .portfolio-card:hover .card-play {
+    .portfolio-card:hover .card-play,
+    .portfolio-card.is-active .card-play {
       opacity: 1;
       transform: translate(-50%, -50%) scale(1);
     }
@@ -604,7 +609,8 @@
       transition: opacity 0.3s;
     }
 
-    .portfolio-card:hover .card-num {
+    .portfolio-card:hover .card-num,
+    .portfolio-card.is-active .card-num {
       opacity: 0;
     }
 
@@ -973,6 +979,11 @@
         flex: none !important;
         height: 220px;
         border-radius: 12px;
+        transition: height 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .portfolio-card.is-active {
+        height: 420px;
       }
 
       .clients-grid {
@@ -1613,32 +1624,50 @@
   }());
   </script>
 
-  <!-- ─── Portfolio accordion: expand on hover + play video ─── -->
+  <!-- ─── Portfolio accordion: expand on hover + tap, play video ─── -->
   <script>
   (function () {
     var grid = document.querySelector('.portfolio-grid');
     if (!grid) return;
 
-    document.querySelectorAll('.portfolio-card').forEach(function (card) {
+    function activateCard(card) {
       var vid = card.querySelector('.card-video');
       var src = vid && vid.querySelector('source');
+      grid.classList.add('has-hover');
+      card.classList.add('is-active');
+      if (src && src.getAttribute('src')) {
+        vid.play().catch(function () {});
+      }
+    }
 
+    function deactivateCard(card) {
+      var vid = card.querySelector('.card-video');
+      grid.classList.remove('has-hover');
+      card.classList.remove('is-active');
+      if (vid) { vid.pause(); vid.currentTime = 0; }
+    }
+
+    document.querySelectorAll('.portfolio-card').forEach(function (card) {
+      /* Desktop: hover */
       card.addEventListener('mouseenter', function () {
-        grid.classList.add('has-hover');
-        card.classList.add('is-active');
-        if (src && src.getAttribute('src')) {
-          vid.play().catch(function () {});
-        }
+        if (window.innerWidth <= 900) return;
+        activateCard(card);
       });
 
       card.addEventListener('mouseleave', function () {
-        grid.classList.remove('has-hover');
-        card.classList.remove('is-active');
-        if (vid) {
-          vid.pause();
-          vid.currentTime = 0;
-        }
+        if (window.innerWidth <= 900) return;
+        deactivateCard(card);
       });
+
+      /* Mobile: tap toggle */
+      card.addEventListener('touchend', function (e) {
+        if (window.innerWidth > 900) return;
+        e.preventDefault();
+        var isAlreadyActive = card.classList.contains('is-active');
+        /* collapse any open card */
+        document.querySelectorAll('.portfolio-card.is-active').forEach(deactivateCard);
+        if (!isAlreadyActive) activateCard(card);
+      }, { passive: false });
     });
   }());
   </script>
