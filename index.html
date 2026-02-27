@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Authoritative Productions — AI Creative Studio</title>
-  <link rel="icon" type="image/png" href="BRAND ASSETS/LOGO3BLK.png" />
+  <link rel="icon" type="image/png" href="BRAND%20ASSETS/LOGO3BLK.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;700&display=swap"
@@ -52,10 +52,6 @@
     /* ─── Typography ─── */
     .bebas {
       font-family: 'Bebas Neue', sans-serif;
-    }
-
-    .mono {
-      font-family: 'IBM Plex Mono', monospace;
     }
 
     .label {
@@ -649,101 +645,6 @@
       opacity: 0.25;
     }
 
-    /* ─── IP / VIRTUAL INFLUENCERS ─── */
-    #ip .section-inner {
-      padding: 6rem 3rem;
-    }
-
-    .ip-header {
-      margin-bottom: 5rem;
-    }
-
-    .ip-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3rem, 7vw, 6rem);
-      line-height: 0.9;
-      text-transform: uppercase;
-    }
-
-    .ip-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--dim);
-      border: 1px solid var(--dim);
-    }
-
-    .ip-card {
-      padding: 4rem 3rem;
-      background: var(--black);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .ip-card::before {
-      content: '';
-      position: absolute;
-      top: -40%;
-      right: -20%;
-      width: 80%;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      pointer-events: none;
-    }
-
-    .ip-card::after {
-      content: '';
-      position: absolute;
-      top: -20%;
-      right: -40%;
-      width: 100%;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.03);
-      pointer-events: none;
-    }
-
-    .ip-index {
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-      opacity: 0.25;
-      margin-bottom: 3rem;
-    }
-
-    .ip-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      text-transform: uppercase;
-      line-height: 0.9;
-      margin-bottom: 2rem;
-    }
-
-    .ip-desc {
-      font-size: 0.68rem;
-      line-height: 1.9;
-      opacity: 0.4;
-      max-width: 36ch;
-      margin-bottom: 2rem;
-    }
-
-    .ip-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .ip-tag {
-      font-size: 0.55rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      border: 1px solid var(--dim);
-      padding: 0.3rem 0.7rem;
-      opacity: 0.5;
-    }
-
     /* ─── ABOUT ─── */
     #about .section-inner {
       padding: 8rem 3rem;
@@ -938,7 +839,6 @@
       .services-title,
       .work-title,
       .clients-title,
-      .ip-title,
       .about-title {
         font-size: clamp(2.5rem, 8vw, 4rem);
       }
@@ -1113,7 +1013,7 @@
   <!-- ─── NAV ─── -->
   <nav>
     <a href="#hero" class="nav-logo">
-      <img src="BRAND ASSETS/LOGO3BLK.png" alt="Authoritative Productions" />
+      <img src="BRAND%20ASSETS/LOGO3BLK.png" alt="Authoritative Productions" />
     </a>
     <ul class="nav-links">
       <li><a href="#work">Work</a></li>
@@ -1258,7 +1158,7 @@
       <div class="portfolio-grid">
 
         <!-- Card 1 -->
-        <div class="portfolio-card">
+        <div class="portfolio-card" role="button" tabindex="0" aria-label="AI Avatar Campaigns">
           <div class="card-bg card-bg-1"></div>
           <video class="card-video" muted loop playsinline preload="none">
             <source src="" type="video/mp4" />
@@ -1274,7 +1174,7 @@
         </div>
 
         <!-- Card 2 -->
-        <div class="portfolio-card">
+        <div class="portfolio-card" role="button" tabindex="0" aria-label="Brand Film Production">
           <div class="card-bg card-bg-2"></div>
           <video class="card-video" muted loop playsinline preload="none">
             <source src="BRAND%20ASSETS/Brandfilm_web.mp4" type="video/mp4" />
@@ -1290,7 +1190,7 @@
         </div>
 
         <!-- Card 3 -->
-        <div class="portfolio-card">
+        <div class="portfolio-card" role="button" tabindex="0" aria-label="Real Estate AI Staging">
           <div class="card-bg card-bg-3"></div>
           <video class="card-video" muted loop playsinline preload="none">
             <source src="" type="video/mp4" />
@@ -1306,7 +1206,7 @@
         </div>
 
         <!-- Card 4 -->
-        <div class="portfolio-card">
+        <div class="portfolio-card" role="button" tabindex="0" aria-label="Corporate Video &amp; Events">
           <div class="card-bg card-bg-4"></div>
           <video class="card-video" muted loop playsinline preload="none">
             <source src="BRAND%20ASSETS/corpvidevent_web.mp4" type="video/mp4" />
@@ -1376,9 +1276,10 @@
 
       <div class="about-portrait-col">
         <img
-          src="BRAND ASSETS/JARON.jpg"
+          src="BRAND%20ASSETS/JARON.jpg"
           alt="Jaron, Founder of Authoritative Productions"
           class="about-portrait"
+          loading="lazy"
         />
         <span class="about-portrait-label">Jaron &nbsp;/&nbsp; Founder</span>
       </div>
@@ -1438,13 +1339,6 @@
     <span class="footer-copy">&copy; 2026 Authoritative Productions</span>
     <span class="footer-right">AP &mdash; Est. 2025 &mdash; Singapore</span>
   </footer>
-
-  <!-- ─── AUTH CHECK ─── -->
-  <script>
-    if (!sessionStorage.getItem('ap_preview')) {
-      window.location.href = 'index.html';
-    }
-  </script>
 
   <!-- ─── Hero parallax + custom cursor ─── -->
   <script>
@@ -1649,6 +1543,15 @@
       card.addEventListener('mouseleave', function () {
         if (window.innerWidth <= 900) return;
         deactivateCard(card);
+      });
+
+      /* Keyboard: Enter/Space toggle */
+      card.addEventListener('keydown', function (e) {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        e.preventDefault();
+        var isAlreadyActive = card.classList.contains('is-active');
+        document.querySelectorAll('.portfolio-card.is-active').forEach(deactivateCard);
+        if (!isAlreadyActive) activateCard(card);
       });
 
       /* Mobile: tap toggle */
