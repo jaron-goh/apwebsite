@@ -773,9 +773,32 @@
     #about .section-inner {
       padding: 8rem 3rem;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
+      grid-template-columns: 0.75fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-portrait-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .about-portrait {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(100%);
+      display: block;
+    }
+
+    .about-portrait-label {
+      margin-top: 1rem;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      opacity: 0.3;
     }
 
     .about-title {
@@ -783,6 +806,7 @@
       font-size: clamp(3rem, 6vw, 5.5rem);
       line-height: 0.9;
       text-transform: uppercase;
+      margin-bottom: 2rem;
     }
 
     .about-body {
@@ -969,7 +993,12 @@
 
       #about .section-inner {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 2.5rem;
+      }
+
+      .about-portrait {
+        aspect-ratio: 4 / 3;
+        object-position: center 20%;
       }
 
       .about-stats {
@@ -1345,9 +1374,18 @@
   <!-- ─── ABOUT ─── -->
   <section id="about" class="section-border">
     <div class="section-inner">
-      <h2 class="about-title">8+ Years<br />of Industry<br />Authority</h2>
+
+      <div class="about-portrait-col">
+        <img
+          src="BRAND%20ASSETS/JARON.jpg"
+          alt="Jaron, Founder of Authoritative Productions"
+          class="about-portrait"
+        />
+        <span class="about-portrait-label">Jaron &nbsp;/&nbsp; Founder</span>
+      </div>
 
       <div class="about-body">
+        <h2 class="about-title">8+ Years<br />of Industry<br />Authority</h2>
         <p class="about-text">
           Authoritative Productions is a Singapore-based creative studio founded in 2025 by Jaron, who brings over
           8+ years of hands-on production experience. We run a proven freelancer network delivering traditional
