@@ -156,6 +156,51 @@
       z-index: 9999;
     }
 
+    /* ─── Preview Gate ─── */
+    .preview-gate {
+      position: fixed;
+      bottom: 2rem;
+      right: 3rem;
+      z-index: 100;
+    }
+
+    #preview-form {
+      display: flex;
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    #preview-pass {
+      background: transparent;
+      border: none;
+      color: var(--white);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.65rem 1rem;
+      outline: none;
+      width: 160px;
+    }
+
+    #preview-pass::placeholder {
+      opacity: 0.3;
+    }
+
+    #preview-form button {
+      background: var(--white);
+      border: none;
+      color: var(--black);
+      cursor: pointer;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 0.65rem 1rem;
+      transition: opacity 0.2s;
+    }
+
+    #preview-form button:hover { opacity: 0.8; }
+
     /* ─── Responsive ─── */
     @media (max-width: 600px) {
       .topbar,
@@ -202,6 +247,39 @@
     <span class="footer-copy">&copy; 2026 Authoritative Productions</span>
     <span class="footer-right">AP&nbsp;&mdash;&nbsp;Est. 2026</span>
   </footer>
+
+  <!-- Preview Gate -->
+  <div class="preview-gate" aria-label="Preview access">
+    <form id="preview-form" autocomplete="off">
+      <input
+        type="password"
+        id="preview-pass"
+        placeholder="Preview Access"
+        aria-label="Preview password"
+        spellcheck="false"
+      />
+      <button type="submit" aria-label="Enter">→</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('preview-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var input = document.getElementById('preview-pass');
+      if (input.value === 'AP2026') {
+        sessionStorage.setItem('ap_preview', '1');
+        window.location.href = 'landing.html';
+      } else {
+        input.style.color = '#ff4444';
+        input.value = '';
+        input.placeholder = 'Incorrect';
+        setTimeout(function () {
+          input.style.color = '';
+          input.placeholder = 'Preview Access';
+        }, 2000);
+      }
+    });
+  </script>
 
 </body>
 </html>
