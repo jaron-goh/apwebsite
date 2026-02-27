@@ -438,201 +438,174 @@
       opacity: 0.3;
     }
 
-    /* Portfolio Grid */
+    /* ─── Portfolio Accordion Gallery ─── */
     .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--dim);
-      border: 1px solid var(--dim);
+      display: flex;
+      gap: 8px;
+      height: 72vh;
+      min-height: 500px;
     }
 
     .portfolio-card {
       position: relative;
-      aspect-ratio: 4 / 3;
+      flex: 1;
+      border-radius: 18px;
       overflow: hidden;
       cursor: pointer;
-      background: var(--black);
+      background: #0a0a0a;
+      transition: flex 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      min-width: 0;
     }
 
-    /* Card visual backgrounds */
+    .portfolio-grid:has(.portfolio-card:hover) .portfolio-card {
+      flex: 0.35;
+    }
+
+    .portfolio-grid .portfolio-card:hover {
+      flex: 5;
+    }
+
     .card-bg {
       position: absolute;
       inset: 0;
-      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s;
+      transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .portfolio-card:hover .card-bg {
+      transform: scale(1.04);
     }
 
     .card-bg-1 {
       background:
-        repeating-linear-gradient(-45deg,
-          transparent,
-          transparent 3px,
-          rgba(255, 255, 255, 0.04) 3px,
-          rgba(255, 255, 255, 0.04) 4px),
-        radial-gradient(ellipse at 30% 70%, rgba(255, 255, 255, 0.08) 0%, transparent 60%),
+        repeating-linear-gradient(-45deg, transparent, transparent 3px, rgba(255,255,255,0.04) 3px, rgba(255,255,255,0.04) 4px),
+        radial-gradient(ellipse at 30% 70%, rgba(255,255,255,0.08) 0%, transparent 60%),
         #0a0a0a;
     }
 
     .card-bg-2 {
       background:
-        repeating-linear-gradient(90deg,
-          transparent,
-          transparent 8px,
-          rgba(255, 255, 255, 0.03) 8px,
-          rgba(255, 255, 255, 0.03) 9px),
-        radial-gradient(ellipse at 70% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 55%),
+        repeating-linear-gradient(90deg, transparent, transparent 8px, rgba(255,255,255,0.03) 8px, rgba(255,255,255,0.03) 9px),
+        radial-gradient(ellipse at 70% 30%, rgba(255,255,255,0.10) 0%, transparent 55%),
         #050505;
     }
 
     .card-bg-3 {
       background:
-        repeating-linear-gradient(0deg,
-          transparent,
-          transparent 12px,
-          rgba(255, 255, 255, 0.04) 12px,
-          rgba(255, 255, 255, 0.04) 13px),
-        repeating-linear-gradient(90deg,
-          transparent,
-          transparent 12px,
-          rgba(255, 255, 255, 0.04) 12px,
-          rgba(255, 255, 255, 0.04) 13px),
+        repeating-linear-gradient(0deg, transparent, transparent 12px, rgba(255,255,255,0.04) 12px, rgba(255,255,255,0.04) 13px),
+        repeating-linear-gradient(90deg, transparent, transparent 12px, rgba(255,255,255,0.04) 12px, rgba(255,255,255,0.04) 13px),
         #080808;
     }
 
     .card-bg-4 {
       background:
-        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.07) 0%, transparent 60%),
-        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.07) 0%, transparent 60%),
+        radial-gradient(circle at 20% 80%, rgba(255,255,255,0.05) 0%, transparent 40%),
         #060606;
     }
 
-    .card-bg-5 {
-      background:
-        repeating-linear-gradient(45deg,
-          transparent,
-          transparent 6px,
-          rgba(255, 255, 255, 0.025) 6px,
-          rgba(255, 255, 255, 0.025) 12px),
-        radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-        #030303;
-    }
-
-    .card-bg-6 {
-      background:
-        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.09) 0%, transparent 40%),
-        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.06) 0%, transparent 35%),
-        repeating-conic-gradient(rgba(255, 255, 255, 0.02) 0deg, transparent 1deg, transparent 4deg),
-        #070707;
-    }
-
-    /* Card hover overlay */
-    .card-overlay {
+    .card-video {
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0);
-      transition: background 0.4s;
-    }
-
-    .portfolio-card:hover .card-overlay {
-      background: rgba(0, 0, 0, 0.45);
-    }
-
-    /* Scanline effect on hover */
-    .card-scan {
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(0deg,
-          transparent,
-          transparent 2px,
-          rgba(255, 255, 255, 0.025) 2px,
-          rgba(255, 255, 255, 0.025) 4px);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       opacity: 0;
-      transition: opacity 0.4s;
+      transition: opacity 0.5s 0.15s;
     }
 
-    .portfolio-card:hover .card-scan {
+    .portfolio-card:hover .card-video {
       opacity: 1;
     }
 
-    /* Card number */
-    .card-num {
+    .card-gradient {
       position: absolute;
-      top: 1.2rem;
-      left: 1.5rem;
-      font-size: 0.55rem;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-      opacity: 0.3;
-      transition: opacity 0.3s;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 45%, rgba(0,0,0,0.88) 100%);
+      opacity: 0;
+      transition: opacity 0.4s;
+      pointer-events: none;
     }
 
-    .portfolio-card:hover .card-num {
-      opacity: 0.7;
+    .portfolio-card:hover .card-gradient {
+      opacity: 1;
     }
 
-    /* Card category tag */
-    .card-tag {
+    .card-label {
       position: absolute;
-      top: 1.2rem;
-      right: 1.5rem;
+      bottom: 1.25rem;
+      left: 1.25rem;
+      background: rgba(0, 0, 0, 0.58);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 10px;
+      padding: 0.85rem 1.1rem;
+      min-width: 140px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.35s 0.1s, transform 0.35s 0.1s;
+    }
+
+    .portfolio-card:hover .card-label {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card-label-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+
+    .card-label-cat {
+      display: block;
       font-size: 0.5rem;
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 0.25rem 0.6rem;
-      opacity: 0;
-      transform: translateY(-4px);
-      transition: opacity 0.3s 0.1s, transform 0.3s 0.1s;
+      opacity: 0.55;
+      margin-bottom: 0.4rem;
     }
 
-    .portfolio-card:hover .card-tag {
-      opacity: 0.7;
-      transform: translateY(0);
+    .card-label-year {
+      display: block;
+      font-size: 0.5rem;
+      letter-spacing: 0.15em;
+      opacity: 0.35;
     }
 
-    /* Card info */
-    .card-info {
+    .card-play {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 2rem 1.5rem 1.5rem;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, transparent 100%);
-      transform: translateY(35%);
-      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .portfolio-card:hover .card-info {
-      transform: translateY(0);
-    }
-
-    .card-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(1.4rem, 2.5vw, 2rem);
-      text-transform: uppercase;
-      line-height: 1;
-      margin-bottom: 0.6rem;
-    }
-
-    .card-desc {
-      font-size: 0.6rem;
-      letter-spacing: 0.1em;
+      top: 50%;
+      left: 50%;
+      width: 14px;
+      height: 14px;
+      background: #fff;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0.5);
       opacity: 0;
-      line-height: 1.8;
-      transform: translateY(6px);
-      transition: opacity 0.3s 0.15s, transform 0.3s 0.15s;
-      max-width: 28ch;
+      transition: opacity 0.3s 0.2s, transform 0.3s 0.2s;
     }
 
-    .portfolio-card:hover .card-desc {
-      opacity: 0.5;
-      transform: translateY(0);
+    .portfolio-card:hover .card-play {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
     }
 
-    /* Card zoom on hover */
-    .portfolio-card:hover .card-bg {
-      transform: scale(1.06);
+    .card-num {
+      position: absolute;
+      top: 1.1rem;
+      left: 1.4rem;
+      font-size: 0.52rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      opacity: 0.2;
+      transition: opacity 0.3s;
+    }
+
+    .portfolio-card:hover .card-num {
+      opacity: 0;
     }
 
     /* ─── CLIENTS ─── */
@@ -992,7 +965,14 @@
       }
 
       .portfolio-grid {
-        grid-template-columns: 1fr 1fr;
+        flex-direction: column;
+        height: auto;
+      }
+
+      .portfolio-card {
+        flex: none !important;
+        height: 220px;
+        border-radius: 12px;
       }
 
       .clients-grid {
@@ -1031,12 +1011,8 @@
     }
 
     @media (max-width: 600px) {
-      .portfolio-grid {
-        grid-template-columns: 1fr;
-      }
-
       .portfolio-card {
-        aspect-ratio: 16 / 9;
+        height: 200px;
       }
 
       .clients-grid {
@@ -1281,52 +1257,64 @@
         <!-- Card 1 -->
         <div class="portfolio-card">
           <div class="card-bg card-bg-1"></div>
-          <div class="card-scan"></div>
-          <div class="card-overlay"></div>
+          <video class="card-video" muted loop playsinline preload="none">
+            <source src="" type="video/mp4" />
+          </video>
+          <div class="card-gradient"></div>
           <span class="card-num">01</span>
-          <span class="card-tag">AI UGC</span>
-          <div class="card-info">
-            <h3 class="card-title">AI Avatar<br />Campaigns</h3>
-            <p class="card-desc">HeyGen-powered digital talent for scalable brand content across social channels.</p>
+          <div class="card-play"></div>
+          <div class="card-label">
+            <span class="card-label-title">AI Avatar Campaigns</span>
+            <span class="card-label-cat">AI UGC</span>
+            <span class="card-label-year">2025</span>
           </div>
         </div>
 
         <!-- Card 2 -->
         <div class="portfolio-card">
           <div class="card-bg card-bg-2"></div>
-          <div class="card-scan"></div>
-          <div class="card-overlay"></div>
+          <video class="card-video" muted loop playsinline preload="none">
+            <source src="" type="video/mp4" />
+          </video>
+          <div class="card-gradient"></div>
           <span class="card-num">02</span>
-          <span class="card-tag">Generative Video</span>
-          <div class="card-info">
-            <h3 class="card-title">Brand Film<br />Production</h3>
-            <p class="card-desc">AI-generated campaign visuals and video hooks for D2C and agency clients.</p>
+          <div class="card-play"></div>
+          <div class="card-label">
+            <span class="card-label-title">Brand Film Production</span>
+            <span class="card-label-cat">Generative Video</span>
+            <span class="card-label-year">2025</span>
           </div>
         </div>
 
         <!-- Card 3 -->
         <div class="portfolio-card">
           <div class="card-bg card-bg-3"></div>
-          <div class="card-scan"></div>
-          <div class="card-overlay"></div>
+          <video class="card-video" muted loop playsinline preload="none">
+            <source src="" type="video/mp4" />
+          </video>
+          <div class="card-gradient"></div>
           <span class="card-num">03</span>
-          <span class="card-tag">AI Staging</span>
-          <div class="card-info">
-            <h3 class="card-title">Real Estate<br />AI Staging</h3>
-            <p class="card-desc">Photorealistic virtual staging and 30/60/90 day AI-driven marketing strategies.</p>
+          <div class="card-play"></div>
+          <div class="card-label">
+            <span class="card-label-title">Real Estate AI Staging</span>
+            <span class="card-label-cat">AI Staging</span>
+            <span class="card-label-year">2025</span>
           </div>
         </div>
 
         <!-- Card 4 -->
         <div class="portfolio-card">
           <div class="card-bg card-bg-4"></div>
-          <div class="card-scan"></div>
-          <div class="card-overlay"></div>
+          <video class="card-video" muted loop playsinline preload="none">
+            <source src="" type="video/mp4" />
+          </video>
+          <div class="card-gradient"></div>
           <span class="card-num">04</span>
-          <span class="card-tag">Corporate</span>
-          <div class="card-info">
-            <h3 class="card-title">Corporate<br />Video &amp; Events</h3>
-            <p class="card-desc">Traditional production backbone — government, institutional, and event coverage.</p>
+          <div class="card-play"></div>
+          <div class="card-label">
+            <span class="card-label-title">Corporate Video &amp; Events</span>
+            <span class="card-label-cat">Corporate</span>
+            <span class="card-label-year">2025</span>
           </div>
         </div>
 
@@ -1622,6 +1610,28 @@
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update, { passive: true });
     update();
+  }());
+  </script>
+
+  <!-- ─── Portfolio accordion: play video on hover ─── -->
+  <script>
+  (function () {
+    document.querySelectorAll('.portfolio-card').forEach(function (card) {
+      var vid = card.querySelector('.card-video');
+      if (!vid) return;
+      var src = vid.querySelector('source');
+
+      card.addEventListener('mouseenter', function () {
+        if (src && src.getAttribute('src')) {
+          vid.play().catch(function () {});
+        }
+      });
+
+      card.addEventListener('mouseleave', function () {
+        vid.pause();
+        vid.currentTime = 0;
+      });
+    });
   }());
   </script>
 
