@@ -755,34 +755,59 @@
     }
 
     .clients-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid var(--dim);
-      border-left: 1px solid var(--dim);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
     }
 
     .client-item {
-      padding: 2rem;
-      border-right: 1px solid var(--dim);
-      border-bottom: 1px solid var(--dim);
       display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
+      align-items: center;
+      justify-content: center;
+      padding: 1.75rem 2.5rem;
+      border-radius: 16px;
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.07) 0%,
+        rgba(255, 255, 255, 0.03) 100%
+      );
+      backdrop-filter: blur(12px) saturate(140%);
+      -webkit-backdrop-filter: blur(12px) saturate(140%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        0 4px 20px rgba(0, 0, 0, 0.15);
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
     }
 
-    .client-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(1.2rem, 2.2vw, 2.6rem);
-      text-transform: uppercase;
-      opacity: 0.85;
+    .client-item:hover {
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(255, 255, 255, 0.06) 100%
+      );
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.22),
+        0 8px 32px rgba(0, 0, 0, 0.22);
     }
 
-    .client-sector {
-      font-size: 0.55rem;
-      font-weight: 700;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      opacity: 0.25;
+    .client-logo-img {
+      height: 44px;
+      width: auto;
+      max-width: 160px;
+      object-fit: contain;
+      display: block;
+      filter: brightness(0) invert(1);
+      opacity: 0.5;
+      transition: filter 0.35s ease, opacity 0.35s ease;
+    }
+
+    .client-item:hover .client-logo-img {
+      filter: none;
+      opacity: 1;
     }
 
     /* ─── ABOUT ─── */
@@ -1151,8 +1176,12 @@
       }
 
 
-      .clients-grid {
-        grid-template-columns: 1fr 1fr;
+      .client-item {
+        padding: 1.25rem 1.75rem;
+      }
+
+      .client-logo-img {
+        height: 36px;
       }
 
       #about .section-inner {
@@ -1186,6 +1215,19 @@
 
       .process-step:last-child {
         border-bottom: none;
+      }
+
+      .process-header {
+        margin-bottom: 2.5rem;
+      }
+
+      .process-step {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+
+      .process-step-num {
+        margin-bottom: 1.25rem;
       }
 
       .cta-bridge {
@@ -1228,8 +1270,8 @@
         height: 200px;
       }
 
-      .clients-grid {
-        grid-template-columns: 1fr 1fr;
+      .client-logo-img {
+        height: 30px;
       }
 
       .hero-meta {
@@ -1319,9 +1361,6 @@
     }
 
     /* ─── HOW WE WORK ─── */
-    #process .section-inner {
-      padding: 6rem 3rem;
-    }
 
     .process-header {
       margin-bottom: 4rem;
@@ -2004,36 +2043,37 @@
 
       <div class="clients-grid">
         <div class="client-item">
-          <p class="client-name">DBS</p>
-          <p class="client-sector">Financial Services</p>
+          <img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/unilever-958x575.png" alt="Unilever" loading="lazy" />
         </div>
         <div class="client-item">
-          <p class="client-name">Citi</p>
-          <p class="client-sector">Financial Services</p>
+          <img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/FedEx-logo-1.webp" alt="FedEx" loading="lazy" />
         </div>
         <div class="client-item">
-          <p class="client-name">Maybank</p>
-          <p class="client-sector">Financial Services</p>
+          <img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/conrad-hotels3274.logowik.com.webp" alt="Conrad Hotels" loading="lazy" />
         </div>
         <div class="client-item">
-          <p class="client-name">Unilever</p>
-          <p class="client-sector">FMCG</p>
+          <img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/Alan-Walker-logo_1.png" alt="Alan Walker" loading="lazy" />
         </div>
         <div class="client-item">
-          <p class="client-name">MINDEF</p>
-          <p class="client-sector">Government</p>
+          <img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/Cordlife_Group_Limited_Logo.jpg" alt="Cordlife" loading="lazy" />
         </div>
         <div class="client-item">
-          <p class="client-name">MOF</p>
-          <p class="client-sector">Government</p>
+          <img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/NUS%20Logo%20Full%20Colour%204C%20%5BConverted%5D.jpg" alt="National University of Singapore" loading="lazy" />
         </div>
         <div class="client-item">
-          <p class="client-name">MOE</p>
-          <p class="client-sector">Government</p>
+          <img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/smu-logo.png" alt="Singapore Management University" loading="lazy" />
         </div>
         <div class="client-item">
-          <p class="client-name">Alan Walker<br />Festival SG</p>
-          <p class="client-sector">Events 2024</p>
+          <img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/SP_Group_logo.svg.png" alt="SP Group" loading="lazy" />
+        </div>
+        <div class="client-item">
+          <img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/NDP+2023+Logo.png" alt="NDP 2023" loading="lazy" />
+        </div>
+        <div class="client-item">
+          <img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/Jalan-Besar-Town-Council-Logo.jpg" alt="Jalan Besar Town Council" loading="lazy" />
+        </div>
+        <div class="client-item">
+          <img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/Singapore%20Police%20Force%20Crest%20Twitter%20Card%20Image.png" alt="Singapore Police Force" loading="lazy" />
         </div>
       </div>
 
