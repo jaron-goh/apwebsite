@@ -1268,6 +1268,38 @@
         padding-top: 4rem;
         padding-bottom: 4rem;
       }
+
+      /* Override high-specificity section padding rules for mobile */
+      #services .section-inner,
+      #work .section-inner,
+      #about .section-inner,
+      #contact .section-inner {
+        padding: 4rem 1.5rem;
+      }
+
+      /* Marquee ticker */
+      .marquee-wrap {
+        padding: 0.9rem 0;
+      }
+
+      .marquee-track {
+        gap: 2rem;
+      }
+
+      /* Logo marquee */
+      .logo-track {
+        gap: 0.75rem;
+      }
+
+      .clients-grid::before,
+      .clients-grid::after {
+        width: 4rem;
+      }
+
+      /* Process bento cards */
+      .process-card {
+        padding: 1.75rem;
+      }
     }
 
     @media (max-width: 600px) {
@@ -1309,12 +1341,63 @@
       }
 
       .nav-logo img {
-        height: 30px;
+        height: 28px;
         filter: brightness(0) invert(1);
+      }
+
+      .nav-cta {
+        padding: 0.45rem 0.9rem;
+        font-size: 0.58rem;
       }
 
       .form-row {
         grid-template-columns: 1fr;
+      }
+
+      /* Section padding — override high-specificity section rules */
+      #services .section-inner,
+      #work .section-inner,
+      #about .section-inner,
+      #contact .section-inner {
+        padding: 3rem 1.25rem;
+      }
+
+      .section-inner {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
+
+      /* Marquee ticker */
+      .marquee-wrap {
+        padding: 0.7rem 0;
+      }
+
+      .marquee-track {
+        gap: 1.2rem;
+      }
+
+      /* Logo marquee — shrink overlays on tiny screens */
+      .clients-grid::before,
+      .clients-grid::after {
+        width: 2rem;
+      }
+
+      .client-item {
+        padding: 1rem 1.25rem;
+      }
+
+      /* Process bento cards */
+      .process-card {
+        padding: 1.25rem;
+      }
+
+      .process-stat-num {
+        font-size: 3.5rem;
+      }
+
+      /* Contact form textarea */
+      .form-textarea {
+        min-height: 100px;
       }
     }
 
