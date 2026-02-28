@@ -548,16 +548,16 @@
       overflow: hidden;
       cursor: pointer;
       background: #0a0a0a;
-      transition: flex 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: flex 0.9s cubic-bezier(0.25, 1, 0.5, 1);
       min-width: 0;
     }
 
     .portfolio-grid.has-hover .portfolio-card {
-      flex: 1.4;
+      flex: 0.85;
     }
 
     .portfolio-grid.has-hover .portfolio-card.is-active {
-      flex: 5;
+      flex: 3.5;
     }
 
     .card-bg {
@@ -2789,14 +2789,17 @@
       }
 
       document.querySelectorAll('.portfolio-card').forEach(function (card) {
-        /* Desktop: hover */
+        /* Desktop: hover — debounced so quick sweeps don't trigger */
+        var hoverTimer = null;
         card.addEventListener('mouseenter', function () {
           if (window.innerWidth <= 900) return;
-          activateCard(card);
+          clearTimeout(hoverTimer);
+          hoverTimer = setTimeout(function () { activateCard(card); }, 180);
         });
 
         card.addEventListener('mouseleave', function () {
           if (window.innerWidth <= 900) return;
+          clearTimeout(hoverTimer);
           deactivateCard(card);
         });
 
