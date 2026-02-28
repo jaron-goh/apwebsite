@@ -873,13 +873,11 @@
       max-width: 200px;
       object-fit: contain;
       display: block;
-      filter: grayscale(1) brightness(1.2);
-      opacity: 0.65;
-      transition: filter 0.35s ease, opacity 0.35s ease;
+      opacity: 0.9;
+      transition: opacity 0.35s ease;
     }
 
     .client-item:hover .client-logo-img {
-      filter: none;
       opacity: 1;
     }
 
@@ -2890,6 +2888,10 @@
       if (!line2 || !estTag) return;
 
       function align() {
+        if (window.innerWidth <= 900) {
+          estTag.style.paddingRight = '';
+          return;
+        }
         const textRight = line2.getBoundingClientRect().right;
         const heroRight = hero.getBoundingClientRect().right;
         estTag.style.paddingRight = Math.max(0, heroRight - textRight) + 'px';
