@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:v0.app)",
+      "Bash(git init)",
+      "Bash(git add index.html \"BRAND ASSETS/LOGO3BLK.png\")",
+      "Bash(git commit:*)",
+      "Bash(git remote add origin https://github.com/jaron-goh/apwebsite.git)",
+      "Bash(git branch -M main)",
+      "Bash(git add render.yaml)",
+      "Bash(git push -u origin main)",
+      "Bash(git add index.html)",
+      "Bash(git add index.html landing.html)",
+      "Bash(git add index.html landing.html \"BRAND ASSETS/Hero1_web.mp4\")",
+      "Bash(git add \"BRAND ASSETS/Hero1_mobile.mp4\")",
+      "Bash(git add \"BRAND ASSETS/Hero2_mobile.mp4\" \"BRAND ASSETS/Hero2_web.mp4\" index.html landing.html)",
+      "Bash(git add landing.html \"BRAND ASSETS/Hero1_web.mp4\")",
+      "Bash(git push origin main)",
+      "Bash(git add landing.html)",
+      "Bash(git add \"BRAND ASSETS/JARON.jpg\")",
+      "Bash(git add landing.html index.html)",
+      "Bash(git add \"BRAND ASSETS/Hero3_mobile.mp4\" \"BRAND ASSETS/Hero3_web.mp4\")",
+      "Bash(git add \"BRAND ASSETS/Hero2_web.mp4\")",
+      "Bash(git add \"BRAND ASSETS/whatwedo.mp4\")",
+      "Bash(git add landing.html \"BRAND ASSETS/Brandfilm_web.mp4\")",
+      "Bash(git add landing.html \"BRAND ASSETS/brandfilmcollapse.png\")",
+      "Bash(git add landing.html \"BRAND ASSETS/aiugc_collapse.png\")",
+      "Bash(git add landing.html \"BRAND ASSETS/corpevent_collapse.jpg\")",
+      "Bash(git add landing.html \"BRAND ASSETS/staging_collapse.png\")"
+    ]
+  }
+}
