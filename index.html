@@ -5,7 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Authoritative Productions — AI Creative Studio</title>
-  <meta name="description" content="Singapore's AI creative studio combining 8+ years of production experience with generative AI video, AI UGC avatars, and virtual staging services." />
+  <meta name="description"
+    content="Singapore's AI creative studio combining 8+ years of production experience with generative AI video, AI UGC avatars, and virtual staging services." />
   <link rel="canonical" href="https://authoritativeproductions.com/" />
   <link rel="icon" type="image/png" href="BRAND%20ASSETS/LOGO3BLK.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,12 +32,15 @@
 
     html {
       scroll-behavior: smooth;
-      scrollbar-width: none;       /* Firefox */
-      -ms-overflow-style: none;    /* IE / Edge */
+      scrollbar-width: none;
+      /* Firefox */
+      -ms-overflow-style: none;
+      /* IE / Edge */
     }
 
     html::-webkit-scrollbar {
-      display: none;               /* Chrome / Safari / Webkit */
+      display: none;
+      /* Chrome / Safari / Webkit */
     }
 
     body {
@@ -105,20 +109,18 @@
     }
 
     nav.nav--scrolled {
-      background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.10) 0%,
-        rgba(255, 255, 255, 0.05) 50%,
-        rgba(255, 255, 255, 0.08) 100%
-      );
+      background: linear-gradient(to bottom,
+          rgba(255, 255, 255, 0.10) 0%,
+          rgba(255, 255, 255, 0.05) 50%,
+          rgba(255, 255, 255, 0.08) 100%);
       backdrop-filter: blur(12px) saturate(160%);
       -webkit-backdrop-filter: blur(12px) saturate(160%);
       border-bottom: none;
       box-shadow:
-        inset 0  1px 0 0 rgba(255, 255, 255, 0.75),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.75),
         inset 0 -1px 0 0 rgba(255, 255, 255, 0.15),
-        0 8px 32px       rgba(0, 0, 0, 0.14),
-        0 2px 8px        rgba(0, 0, 0, 0.08);
+        0 8px 32px rgba(0, 0, 0, 0.14),
+        0 2px 8px rgba(0, 0, 0, 0.08);
       isolation: isolate;
     }
 
@@ -126,49 +128,56 @@
     nav::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       height: 18px;
-      background: radial-gradient(
-        ellipse 60% 100% at 50% 0%,
-        rgba(255, 255, 255, 0.80) 0%,
-        rgba(255, 255, 255, 0.40) 40%,
-        rgba(255, 255, 255, 0.08) 75%,
-        transparent 100%
-      );
+      background: radial-gradient(ellipse 60% 100% at 50% 0%,
+          rgba(255, 255, 255, 0.80) 0%,
+          rgba(255, 255, 255, 0.40) 40%,
+          rgba(255, 255, 255, 0.08) 75%,
+          transparent 100%);
       pointer-events: none;
       z-index: 0;
       opacity: 0;
       transition: opacity 0.4s ease;
     }
 
-    nav.nav--scrolled::before { opacity: 1; }
+    nav.nav--scrolled::before {
+      opacity: 1;
+    }
 
     /* ── Liquid Glass: subtle chromatic bottom edge ── */
     nav::after {
       content: '';
       position: absolute;
-      bottom: 0; left: 0; right: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
       height: 1px;
-      background: linear-gradient(
-        to right,
-        transparent 0%,
-        rgba(180, 100, 255, 0.12) 15%,
-        rgba(140, 220, 255, 0.18) 35%,
-        rgba(255, 255, 255, 0.22) 50%,
-        rgba(140, 220, 255, 0.18) 65%,
-        rgba(180, 100, 255, 0.12) 85%,
-        transparent 100%
-      );
+      background: linear-gradient(to right,
+          transparent 0%,
+          rgba(180, 100, 255, 0.12) 15%,
+          rgba(140, 220, 255, 0.18) 35%,
+          rgba(255, 255, 255, 0.22) 50%,
+          rgba(140, 220, 255, 0.18) 65%,
+          rgba(180, 100, 255, 0.12) 85%,
+          transparent 100%);
       pointer-events: none;
       z-index: 0;
       opacity: 0;
       transition: opacity 0.4s ease;
     }
 
-    nav.nav--scrolled::after { opacity: 1; }
+    nav.nav--scrolled::after {
+      opacity: 1;
+    }
 
     /* Children above pseudo-elements */
-    nav > * { position: relative; z-index: 1; }
+    nav>* {
+      position: relative;
+      z-index: 1;
+    }
 
     .nav-logo img {
       height: 36px;
@@ -242,17 +251,17 @@
     .hero-video-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.04) 0%,
-        rgba(0,0,0,0.02) 40%,
-        rgba(0,0,0,0.35) 100%
-      );
+      background: linear-gradient(to bottom,
+          rgba(0, 0, 0, 0.04) 0%,
+          rgba(0, 0, 0, 0.02) 40%,
+          rgba(0, 0, 0, 0.35) 100%);
       z-index: 1;
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .hero-video { display: none; }
+      .hero-video {
+        display: none;
+      }
     }
 
     .hero-eyebrow,
@@ -596,7 +605,7 @@
     .card-gradient {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, transparent 45%, rgba(0,0,0,0.88) 100%);
+      background: linear-gradient(to bottom, transparent 45%, rgba(0, 0, 0, 0.88) 100%);
       opacity: 0;
       transition: opacity 0.4s;
       pointer-events: none;
@@ -618,25 +627,23 @@
       transform: translateY(10px);
       transition: opacity 0.35s 0.1s, transform 0.35s 0.1s;
       /* ── Liquid Glass ── */
-      background: linear-gradient(
-        160deg,
-        rgba(255, 255, 255, 0.11) 0%,
-        rgba(255, 255, 255, 0.04) 40%,
-        rgba(255, 255, 255, 0.07) 100%
-      );
+      background: linear-gradient(160deg,
+          rgba(255, 255, 255, 0.11) 0%,
+          rgba(255, 255, 255, 0.04) 40%,
+          rgba(255, 255, 255, 0.07) 100%);
       backdrop-filter: blur(24px) saturate(180%) brightness(1.08) contrast(1.04);
       -webkit-backdrop-filter: blur(24px) saturate(180%) brightness(1.08) contrast(1.04);
       border: 1px solid transparent;
       background-clip: padding-box;
       box-shadow:
-        inset 0  1px 0 0 rgba(255, 255, 255, 0.45),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.45),
         inset 0 -1px 0 0 rgba(255, 255, 255, 0.08),
-        inset  1px 0 0 0 rgba(255, 255, 255, 0.12),
-        0 0 0 1px        rgba(255, 255, 255, 0.14),
-        0 0 0 2px        rgba(100, 160, 255, 0.08),
-        0 0 0 3px        rgba(180, 100, 255, 0.05),
-        0 8px 32px       rgba(0, 0, 0, 0.35),
-        0 2px  8px       rgba(0, 0, 0, 0.20);
+        inset 1px 0 0 0 rgba(255, 255, 255, 0.12),
+        0 0 0 1px rgba(255, 255, 255, 0.14),
+        0 0 0 2px rgba(100, 160, 255, 0.08),
+        0 0 0 3px rgba(180, 100, 255, 0.05),
+        0 8px 32px rgba(0, 0, 0, 0.35),
+        0 2px 8px rgba(0, 0, 0, 0.20);
       isolation: isolate;
     }
 
@@ -654,13 +661,11 @@
       left: 10%;
       right: 10%;
       height: 55%;
-      background: radial-gradient(
-        ellipse 80% 60% at 50% 0%,
-        rgba(255, 255, 255, 0.22) 0%,
-        rgba(255, 255, 255, 0.10) 35%,
-        rgba(200, 220, 255, 0.04) 65%,
-        transparent 100%
-      );
+      background: radial-gradient(ellipse 80% 60% at 50% 0%,
+          rgba(255, 255, 255, 0.22) 0%,
+          rgba(255, 255, 255, 0.10) 35%,
+          rgba(200, 220, 255, 0.04) 65%,
+          transparent 100%);
       border-radius: 50%;
       pointer-events: none;
       z-index: 0;
@@ -676,14 +681,14 @@
       z-index: 0;
       background: transparent;
       box-shadow:
-        inset 0  2px 4px 0 rgba(160, 180, 255, 0.20),
-        inset 0 -2px 4px 0 rgba(255, 160,  80, 0.06),
-        inset  2px 0 4px 0 rgba(100, 255, 200, 0.07),
+        inset 0 2px 4px 0 rgba(160, 180, 255, 0.20),
+        inset 0 -2px 4px 0 rgba(255, 160, 80, 0.06),
+        inset 2px 0 4px 0 rgba(100, 255, 200, 0.07),
         inset -2px 0 4px 0 rgba(200, 100, 255, 0.07);
     }
 
     /* Ensure text sits above pseudo-elements */
-    .card-label > * {
+    .card-label>* {
       position: relative;
       z-index: 1;
     }
@@ -914,7 +919,7 @@
     .form-textarea,
     .form-select {
       background: transparent;
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       color: var(--white);
       font-family: 'IBM Plex Mono', monospace;
       font-size: 0.7rem;
@@ -924,13 +929,14 @@
       width: 100%;
       transition: border-color 0.2s;
       -webkit-appearance: none;
+      appearance: none;
       border-radius: 0;
     }
 
     .form-input:focus,
     .form-textarea:focus,
     .form-select:focus {
-      border-color: rgba(255,255,255,0.6);
+      border-color: rgba(255, 255, 255, 0.6);
     }
 
     .form-input::placeholder,
@@ -970,8 +976,14 @@
       align-self: flex-start;
     }
 
-    .form-submit:hover { opacity: 0.85; }
-    .form-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+    .form-submit:hover {
+      opacity: 0.85;
+    }
+
+    .form-submit:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
 
     .form-status {
       font-size: 0.65rem;
@@ -983,7 +995,7 @@
     }
 
     .form-status.success {
-      border-color: rgba(255,255,255,0.3);
+      border-color: rgba(255, 255, 255, 0.3);
       color: var(--white);
       opacity: 0.7;
     }
@@ -1012,6 +1024,7 @@
 
     /* ─── Responsive ─── */
     @media (max-width: 900px) {
+
       nav,
       nav.nav--scrolled {
         padding: 1rem 1.5rem;
@@ -1040,8 +1053,8 @@
       /* Suppress centered logo watermark with a radial dark vignette */
       .hero-video-overlay {
         background:
-          radial-gradient(ellipse 80% 50% at 50% 42%, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 70%),
-          linear-gradient(to bottom, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.02) 40%, rgba(0,0,0,0.35) 100%);
+          radial-gradient(ellipse 80% 50% at 50% 42%, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 70%),
+          linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.02) 40%, rgba(0, 0, 0, 0.35) 100%);
       }
 
       .hero-eyebrow {
@@ -1301,7 +1314,9 @@
       flex-shrink: 0;
     }
 
-    .cta-bridge-btn:hover { opacity: 0.85; }
+    .cta-bridge-btn:hover {
+      opacity: 0.85;
+    }
 
     /* ─── HOW WE WORK ─── */
     #process .section-inner {
@@ -1480,7 +1495,9 @@
       transition: opacity 0.2s;
     }
 
-    .footer-nav a:hover { opacity: 0.8; }
+    .footer-nav a:hover {
+      opacity: 0.8;
+    }
 
     .footer-contact {
       display: flex;
@@ -1499,16 +1516,21 @@
       transition: opacity 0.2s;
     }
 
-    .footer-contact a:hover { opacity: 0.7; }
+    .footer-contact a:hover {
+      opacity: 0.7;
+    }
 
     /* ─── Custom Cursor (mouse/fine-pointer only) ─── */
     @media (hover: hover) and (pointer: fine) {
-      body { cursor: none; }
+      body {
+        cursor: none;
+      }
 
       .cursor-dot,
       .cursor-ring {
         position: fixed;
-        top: 0; left: 0;
+        top: 0;
+        left: 0;
         border-radius: 50%;
         pointer-events: none;
         z-index: 9999;
@@ -1539,22 +1561,52 @@
       }
 
       /* Hide native cursor on interactive children */
-      a, button, [role="button"] { cursor: none; }
+      a,
+      button,
+      [role="button"] {
+        cursor: none;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .cursor-dot, .cursor-ring { display: none !important; }
+
+      .cursor-dot,
+      .cursor-ring {
+        display: none !important;
+      }
     }
 
     /* ─── Large Desktop (1400px+) ─── */
     @media (min-width: 1400px) {
-      .label { font-size: 0.75rem; }
-      .hero-tagline { font-size: 0.82rem; }
-      .service-desc { font-size: 0.78rem; }
-      .about-text { font-size: 0.82rem; }
-      .service-tool-tag { font-size: 0.63rem; }
-      .nav-links a, .nav-cta { font-size: 0.72rem; }
-      .marquee-track span { font-size: 0.8rem; }
+      .label {
+        font-size: 0.75rem;
+      }
+
+      .hero-tagline {
+        font-size: 0.82rem;
+      }
+
+      .service-desc {
+        font-size: 0.78rem;
+      }
+
+      .about-text {
+        font-size: 0.82rem;
+      }
+
+      .service-tool-tag {
+        font-size: 0.63rem;
+      }
+
+      .nav-links a,
+      .nav-cta {
+        font-size: 0.72rem;
+      }
+
+      .marquee-track span {
+        font-size: 0.8rem;
+      }
+
       nav {
         padding-left: max(3rem, calc((100vw - 1600px) / 2));
         padding-right: max(3rem, calc((100vw - 1600px) / 2));
@@ -1563,15 +1615,43 @@
 
     /* ─── XL / 4K (1920px+) ─── */
     @media (min-width: 1920px) {
-      .label { font-size: 0.85rem; }
-      .hero-tagline { font-size: 0.95rem; }
-      .service-desc { font-size: 0.9rem; }
-      .about-text { font-size: 0.95rem; }
-      .service-tool-tag { font-size: 0.7rem; }
-      .nav-links a, .nav-cta { font-size: 0.8rem; }
-      .about-stat-label, .client-sector { font-size: 0.65rem; }
-      .marquee-track span { font-size: 1rem; }
-      nav { padding: 1.5rem max(3rem, calc((100vw - 1600px) / 2)); }
+      .label {
+        font-size: 0.85rem;
+      }
+
+      .hero-tagline {
+        font-size: 0.95rem;
+      }
+
+      .service-desc {
+        font-size: 0.9rem;
+      }
+
+      .about-text {
+        font-size: 0.95rem;
+      }
+
+      .service-tool-tag {
+        font-size: 0.7rem;
+      }
+
+      .nav-links a,
+      .nav-cta {
+        font-size: 0.8rem;
+      }
+
+      .about-stat-label,
+      .client-sector {
+        font-size: 0.65rem;
+      }
+
+      .marquee-track span {
+        font-size: 1rem;
+      }
+
+      nav {
+        padding: 1.5rem max(3rem, calc((100vw - 1600px) / 2));
+      }
     }
   </style>
   <script type="application/ld+json">
@@ -1602,7 +1682,7 @@
 
 <body>
   <!-- ─── Custom cursor (fine-pointer devices only) ─── -->
-  <div class="cursor-dot"  aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"></div>
 
   <!-- ─── NAV ─── -->
@@ -1623,7 +1703,7 @@
   <!-- ─── HERO ─── -->
   <section id="hero">
     <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-      <source src="BRAND%20ASSETS/Hero2_web.mp4"    media="(min-width: 768px)" type="video/mp4" />
+      <source src="BRAND%20ASSETS/Hero2_web.mp4" media="(min-width: 768px)" type="video/mp4" />
       <source src="BRAND%20ASSETS/Hero2_mobile.mp4" type="video/mp4" />
     </video>
     <div class="hero-video-overlay" aria-hidden="true"></div>
@@ -1732,7 +1812,8 @@
           <p class="service-num">04 /</p>
           <h3 class="service-name">Corporate<br />Production</h3>
           <p class="service-desc">
-            Full-crew traditional production for corporate video, live events, and institutional content. Built on 8+ years of delivery with an established freelancer network.
+            Full-crew traditional production for corporate video, live events, and institutional content. Built on 8+
+            years of delivery with an established freelancer network.
           </p>
           <div class="service-tools">
             <span class="service-tool-tag">Full Crew</span>
@@ -1939,12 +2020,8 @@
     <div class="section-inner">
 
       <div class="about-portrait-col">
-        <img
-          src="BRAND%20ASSETS/jaron.png"
-          alt="Jaron, Founder of Authoritative Productions"
-          class="about-portrait"
-          loading="lazy"
-        />
+        <img src="BRAND%20ASSETS/jaron.png" alt="Jaron, Founder of Authoritative Productions" class="about-portrait"
+          loading="lazy" />
         <span class="about-portrait-label">Jaron &nbsp;/&nbsp; Founder</span>
       </div>
 
@@ -1991,13 +2068,7 @@
         <span class="muted">Something</span><br />
         Authoritative.
       </h2>
-      <form
-        class="contact-form"
-        id="contact-form"
-        action="https://formspree.io/f/mojnbvkn"
-        method="POST"
-        novalidate
-      >
+      <form class="contact-form" id="contact-form" action="https://formspree.io/f/mojnbvkn" method="POST" novalidate>
         <!-- Formspree spam honeypot -->
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
         <input type="hidden" name="_subject" value="New inquiry — Authoritative Productions" />
@@ -2036,7 +2107,8 @@
 
         <div class="form-field">
           <label class="form-label" for="cf-message">Message *</label>
-          <textarea class="form-textarea" id="cf-message" name="message" placeholder="Tell us about your project..." required></textarea>
+          <textarea class="form-textarea" id="cf-message" name="message" placeholder="Tell us about your project..."
+            required></textarea>
         </div>
 
         <div class="form-status" id="cf-status" role="status" aria-live="polite"></div>
@@ -2068,280 +2140,281 @@
       <!-- TODO: Update email address before launch -->
       <a href="mailto:hello@authoritativeproductions.com">hello@authoritativeproductions.com</a>
       <!-- TODO: Update LinkedIn URL before launch -->
-      <a href="https://linkedin.com/company/authoritative-productions" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://linkedin.com/company/authoritative-productions" target="_blank"
+        rel="noopener noreferrer">LinkedIn</a>
     </div>
   </footer>
 
   <!-- ─── Hero parallax + custom cursor ─── -->
   <script>
-  (function () {
-    // Bail on reduced-motion or coarse-pointer (touch-only) devices
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const coarsePointer = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+    (function () {
+      // Bail on reduced-motion or coarse-pointer (touch-only) devices
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const coarsePointer = window.matchMedia('(hover: none), (pointer: coarse)').matches;
 
-    const hero     = document.getElementById('hero');
-    const video    = hero.querySelector('.hero-video');
-    const headline = hero.querySelector('.hero-headline');
-    const estTag   = hero.querySelector('.hero-est');
-    const eyebrow  = hero.querySelector('.hero-eyebrow');
-    const dot      = document.querySelector('.cursor-dot');
-    const ring     = document.querySelector('.cursor-ring');
+      const hero = document.getElementById('hero');
+      const video = hero.querySelector('.hero-video');
+      const headline = hero.querySelector('.hero-headline');
+      const estTag = hero.querySelector('.hero-est');
+      const eyebrow = hero.querySelector('.hero-eyebrow');
+      const dot = document.querySelector('.cursor-dot');
+      const ring = document.querySelector('.cursor-ring');
 
-    /* ── Lerp helper ── */
-    const lerp = (a, b, t) => a + (b - a) * t;
+      /* ── Lerp helper ── */
+      const lerp = (a, b, t) => a + (b - a) * t;
 
-    /* ── Mobile video offset — shifts logo into upper third on small screens ── */
-    function getMobileVideoParams() {
-      const mobile = window.innerWidth <= 900;
-      return {
-        scale:   mobile ? 1.28 : 1.06,
-        // Pre-scale translate: divide desired screen-px shift by scale
-        // Target: ~110px upward in screen space → 110/1.28 ≈ 86px in local coords
-        baseY:   mobile ? -86 : 0
-      };
-    }
-    let vp = getMobileVideoParams();
-    window.addEventListener('resize', function () { vp = getMobileVideoParams(); }, { passive: true });
+      /* ── Mobile video offset — shifts logo into upper third on small screens ── */
+      function getMobileVideoParams() {
+        const mobile = window.innerWidth <= 900;
+        return {
+          scale: mobile ? 1.28 : 1.06,
+          // Pre-scale translate: divide desired screen-px shift by scale
+          // Target: ~110px upward in screen space → 110/1.28 ≈ 86px in local coords
+          baseY: mobile ? -86 : 0
+        };
+      }
+      let vp = getMobileVideoParams();
+      window.addEventListener('resize', function () { vp = getMobileVideoParams(); }, { passive: true });
 
-    /* ── Parallax state ── */
-    let tpx = 0, tpy = 0; // target
-    let px  = 0, py  = 0; // current (lerped)
+      /* ── Parallax state ── */
+      let tpx = 0, tpy = 0; // target
+      let px = 0, py = 0; // current (lerped)
 
-    /* ── Cursor state ── */
-    let mx = 0, my = 0;   // raw mouse
-    let dx = 0, dy = 0;   // dot (fast)
-    let rx = 0, ry = 0;   // ring (slow)
-    let cursorVisible = false;
+      /* ── Cursor state ── */
+      let mx = 0, my = 0;   // raw mouse
+      let dx = 0, dy = 0;   // dot (fast)
+      let rx = 0, ry = 0;   // ring (slow)
+      let cursorVisible = false;
 
-    /* ── Parallax: mouse ── */
-    if (!reducedMotion) {
-      hero.addEventListener('mousemove', function (e) {
-        const r  = hero.getBoundingClientRect();
-        const nx = ((e.clientX - r.left)  / r.width  - 0.5) * 2;
-        const ny = ((e.clientY - r.top)   / r.height - 0.5) * 2;
-        tpx = nx * 14;
-        tpy = ny * 9;
-      }, { passive: true });
-
-      hero.addEventListener('mouseleave', function () {
-        tpx = tpy = 0;
-      });
-
-      /* Parallax: touch */
-      hero.addEventListener('touchmove', function (e) {
-        const touch = e.touches[0];
-        const r  = hero.getBoundingClientRect();
-        const nx = ((touch.clientX - r.left)  / r.width  - 0.5) * 2;
-        const ny = ((touch.clientY - r.top)   / r.height - 0.5) * 2;
-        tpx = nx * 7;
-        tpy = ny * 5;
-      }, { passive: true });
-
-      hero.addEventListener('touchend', function () {
-        tpx = tpy = 0;
-      }, { passive: true });
-    }
-
-    /* ── Custom cursor: track mouse globally ── */
-    if (!coarsePointer) {
-      document.addEventListener('mousemove', function (e) {
-        mx = e.clientX;
-        my = e.clientY;
-        if (!cursorVisible) {
-          // Snap on first move to avoid flying-in from 0,0
-          dx = rx = mx;
-          dy = ry = my;
-          dot.style.opacity  = '1';
-          ring.style.opacity = '1';
-          cursorVisible = true;
-        }
-      }, { passive: true });
-
-      /* Expand ring on interactive elements */
-      document.querySelectorAll('a, button, [role="button"]').forEach(function (el) {
-        el.addEventListener('mouseenter', function () { ring.classList.add('is-hovering'); });
-        el.addEventListener('mouseleave', function () { ring.classList.remove('is-hovering'); });
-      });
-    }
-
-    /* ── RAF loop ── */
-    function tick() {
-      requestAnimationFrame(tick);
-
-      /* Parallax */
+      /* ── Parallax: mouse ── */
       if (!reducedMotion) {
-        px = lerp(px, tpx, 0.055);
-        py = lerp(py, tpy, 0.055);
+        hero.addEventListener('mousemove', function (e) {
+          const r = hero.getBoundingClientRect();
+          const nx = ((e.clientX - r.left) / r.width - 0.5) * 2;
+          const ny = ((e.clientY - r.top) / r.height - 0.5) * 2;
+          tpx = nx * 14;
+          tpy = ny * 9;
+        }, { passive: true });
 
-        // Video moves opposite — scale gives headroom; baseY shifts logo up on mobile
-        video.style.transform =
-          'scale(' + vp.scale + ') translate(' + (-px).toFixed(2) + 'px, ' + (-py + vp.baseY).toFixed(2) + 'px)';
+        hero.addEventListener('mouseleave', function () {
+          tpx = tpy = 0;
+        });
 
-        // Foreground text moves with the cursor at a slower rate
-        const tx = (px * 0.28).toFixed(2);
-        const ty = (py * 0.28).toFixed(2);
-        const tf = 'translate(' + tx + 'px, ' + ty + 'px)';
-        headline.style.transform = tf;
-        if (estTag)   estTag.style.transform   = tf;
-        if (eyebrow)  eyebrow.style.transform  =
-          'translate(' + (px * 0.18).toFixed(2) + 'px, ' + (py * 0.18).toFixed(2) + 'px)';
+        /* Parallax: touch */
+        hero.addEventListener('touchmove', function (e) {
+          const touch = e.touches[0];
+          const r = hero.getBoundingClientRect();
+          const nx = ((touch.clientX - r.left) / r.width - 0.5) * 2;
+          const ny = ((touch.clientY - r.top) / r.height - 0.5) * 2;
+          tpx = nx * 7;
+          tpy = ny * 5;
+        }, { passive: true });
+
+        hero.addEventListener('touchend', function () {
+          tpx = tpy = 0;
+        }, { passive: true });
       }
 
-      /* Custom cursor */
-      if (!coarsePointer && cursorVisible) {
-        dx = lerp(dx, mx, 0.88);
-        dy = lerp(dy, my, 0.88);
-        rx = lerp(rx, mx, 0.10);
-        ry = lerp(ry, my, 0.10);
+      /* ── Custom cursor: track mouse globally ── */
+      if (!coarsePointer) {
+        document.addEventListener('mousemove', function (e) {
+          mx = e.clientX;
+          my = e.clientY;
+          if (!cursorVisible) {
+            // Snap on first move to avoid flying-in from 0,0
+            dx = rx = mx;
+            dy = ry = my;
+            dot.style.opacity = '1';
+            ring.style.opacity = '1';
+            cursorVisible = true;
+          }
+        }, { passive: true });
 
-        dot.style.left  = dx.toFixed(1) + 'px';
-        dot.style.top   = dy.toFixed(1) + 'px';
-        ring.style.left = rx.toFixed(1) + 'px';
-        ring.style.top  = ry.toFixed(1) + 'px';
+        /* Expand ring on interactive elements */
+        document.querySelectorAll('a, button, [role="button"]').forEach(function (el) {
+          el.addEventListener('mouseenter', function () { ring.classList.add('is-hovering'); });
+          el.addEventListener('mouseleave', function () { ring.classList.remove('is-hovering'); });
+        });
       }
-    }
 
-    requestAnimationFrame(tick);
-  }());
+      /* ── RAF loop ── */
+      function tick() {
+        requestAnimationFrame(tick);
 
-  /* ── Align "Est. 2025" right edge to match the headline text right edge ── */
-  (function () {
-    const hero    = document.getElementById('hero');
-    const line2   = hero.querySelector('.hero-headline .line-2');
-    const estTag  = hero.querySelector('.hero-est');
-    if (!line2 || !estTag) return;
+        /* Parallax */
+        if (!reducedMotion) {
+          px = lerp(px, tpx, 0.055);
+          py = lerp(py, tpy, 0.055);
 
-    function align() {
-      const textRight = line2.getBoundingClientRect().right;
-      const heroRight = hero.getBoundingClientRect().right;
-      estTag.style.paddingRight = Math.max(0, heroRight - textRight) + 'px';
-    }
+          // Video moves opposite — scale gives headroom; baseY shifts logo up on mobile
+          video.style.transform =
+            'scale(' + vp.scale + ') translate(' + (-px).toFixed(2) + 'px, ' + (-py + vp.baseY).toFixed(2) + 'px)';
 
-    // Run after web fonts are rendered for accurate metrics
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(align);
-    } else {
-      align();
-    }
-    window.addEventListener('resize', align, { passive: true });
-  }());
+          // Foreground text moves with the cursor at a slower rate
+          const tx = (px * 0.28).toFixed(2);
+          const ty = (py * 0.28).toFixed(2);
+          const tf = 'translate(' + tx + 'px, ' + ty + 'px)';
+          headline.style.transform = tf;
+          if (estTag) estTag.style.transform = tf;
+          if (eyebrow) eyebrow.style.transform =
+            'translate(' + (px * 0.18).toFixed(2) + 'px, ' + (py * 0.18).toFixed(2) + 'px)';
+        }
 
-  /* ── Nav: glass on scroll (desktop only; mobile always transparent) ── */
-  (function () {
-    const nav = document.querySelector('nav');
-    function update() {
-      if (window.innerWidth <= 900) {
-        nav.classList.remove('nav--scrolled');
+        /* Custom cursor */
+        if (!coarsePointer && cursorVisible) {
+          dx = lerp(dx, mx, 0.88);
+          dy = lerp(dy, my, 0.88);
+          rx = lerp(rx, mx, 0.10);
+          ry = lerp(ry, my, 0.10);
+
+          dot.style.left = dx.toFixed(1) + 'px';
+          dot.style.top = dy.toFixed(1) + 'px';
+          ring.style.left = rx.toFixed(1) + 'px';
+          ring.style.top = ry.toFixed(1) + 'px';
+        }
+      }
+
+      requestAnimationFrame(tick);
+    }());
+
+    /* ── Align "Est. 2025" right edge to match the headline text right edge ── */
+    (function () {
+      const hero = document.getElementById('hero');
+      const line2 = hero.querySelector('.hero-headline .line-2');
+      const estTag = hero.querySelector('.hero-est');
+      if (!line2 || !estTag) return;
+
+      function align() {
+        const textRight = line2.getBoundingClientRect().right;
+        const heroRight = hero.getBoundingClientRect().right;
+        estTag.style.paddingRight = Math.max(0, heroRight - textRight) + 'px';
+      }
+
+      // Run after web fonts are rendered for accurate metrics
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(align);
       } else {
-        nav.classList.toggle('nav--scrolled', window.scrollY > 40);
+        align();
       }
-    }
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update, { passive: true });
-    update();
-  }());
+      window.addEventListener('resize', align, { passive: true });
+    }());
+
+    /* ── Nav: glass on scroll (desktop only; mobile always transparent) ── */
+    (function () {
+      const nav = document.querySelector('nav');
+      function update() {
+        if (window.innerWidth <= 900) {
+          nav.classList.remove('nav--scrolled');
+        } else {
+          nav.classList.toggle('nav--scrolled', window.scrollY > 40);
+        }
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+      update();
+    }());
   </script>
 
   <!-- ─── Portfolio accordion: expand on hover + tap, play video ─── -->
   <script>
-  (function () {
-    var grid = document.querySelector('.portfolio-grid');
-    if (!grid) return;
+    (function () {
+      var grid = document.querySelector('.portfolio-grid');
+      if (!grid) return;
 
-    function activateCard(card) {
-      var vid = card.querySelector('.card-video');
-      var src = vid && vid.querySelector('source');
-      grid.classList.add('has-hover');
-      card.classList.add('is-active');
-      if (src && src.getAttribute('src')) {
-        vid.play().catch(function () {});
+      function activateCard(card) {
+        var vid = card.querySelector('.card-video');
+        var src = vid && vid.querySelector('source');
+        grid.classList.add('has-hover');
+        card.classList.add('is-active');
+        if (src && src.getAttribute('src')) {
+          vid.play().catch(function () { });
+        }
       }
-    }
 
-    function deactivateCard(card) {
-      var vid = card.querySelector('.card-video');
-      grid.classList.remove('has-hover');
-      card.classList.remove('is-active');
-      if (vid) { vid.pause(); vid.currentTime = 0; }
-    }
+      function deactivateCard(card) {
+        var vid = card.querySelector('.card-video');
+        grid.classList.remove('has-hover');
+        card.classList.remove('is-active');
+        if (vid) { vid.pause(); vid.currentTime = 0; }
+      }
 
-    document.querySelectorAll('.portfolio-card').forEach(function (card) {
-      /* Desktop: hover */
-      card.addEventListener('mouseenter', function () {
-        if (window.innerWidth <= 900) return;
-        activateCard(card);
+      document.querySelectorAll('.portfolio-card').forEach(function (card) {
+        /* Desktop: hover */
+        card.addEventListener('mouseenter', function () {
+          if (window.innerWidth <= 900) return;
+          activateCard(card);
+        });
+
+        card.addEventListener('mouseleave', function () {
+          if (window.innerWidth <= 900) return;
+          deactivateCard(card);
+        });
+
+        /* Keyboard: Enter/Space toggle */
+        card.addEventListener('keydown', function (e) {
+          if (e.key !== 'Enter' && e.key !== ' ') return;
+          e.preventDefault();
+          var isAlreadyActive = card.classList.contains('is-active');
+          document.querySelectorAll('.portfolio-card.is-active').forEach(deactivateCard);
+          if (!isAlreadyActive) activateCard(card);
+        });
+
+        /* Mobile: tap toggle */
+        card.addEventListener('touchend', function (e) {
+          if (window.innerWidth > 900) return;
+          e.preventDefault();
+          var isAlreadyActive = card.classList.contains('is-active');
+          /* collapse any open card */
+          document.querySelectorAll('.portfolio-card.is-active').forEach(deactivateCard);
+          if (!isAlreadyActive) activateCard(card);
+        }, { passive: false });
       });
-
-      card.addEventListener('mouseleave', function () {
-        if (window.innerWidth <= 900) return;
-        deactivateCard(card);
-      });
-
-      /* Keyboard: Enter/Space toggle */
-      card.addEventListener('keydown', function (e) {
-        if (e.key !== 'Enter' && e.key !== ' ') return;
-        e.preventDefault();
-        var isAlreadyActive = card.classList.contains('is-active');
-        document.querySelectorAll('.portfolio-card.is-active').forEach(deactivateCard);
-        if (!isAlreadyActive) activateCard(card);
-      });
-
-      /* Mobile: tap toggle */
-      card.addEventListener('touchend', function (e) {
-        if (window.innerWidth > 900) return;
-        e.preventDefault();
-        var isAlreadyActive = card.classList.contains('is-active');
-        /* collapse any open card */
-        document.querySelectorAll('.portfolio-card.is-active').forEach(deactivateCard);
-        if (!isAlreadyActive) activateCard(card);
-      }, { passive: false });
-    });
-  }());
+    }());
   </script>
 
   <!-- ─── Contact form ─── -->
   <script>
-  (function () {
-    var form   = document.getElementById('contact-form');
-    var status = document.getElementById('cf-status');
-    var submit = document.getElementById('cf-submit');
+    (function () {
+      var form = document.getElementById('contact-form');
+      var status = document.getElementById('cf-status');
+      var submit = document.getElementById('cf-submit');
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
 
-      submit.disabled    = true;
-      submit.textContent = 'Sending\u2026';
-      status.style.display = 'none';
-      status.className     = 'form-status';
+        submit.disabled = true;
+        submit.textContent = 'Sending\u2026';
+        status.style.display = 'none';
+        status.className = 'form-status';
 
-      fetch(form.action, {
-        method:  'POST',
-        body:    new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      })
-      .then(function (res) {
-        if (res.ok) {
-          status.textContent   = 'Message sent \u2014 we\u2019ll be in touch shortly.';
-          status.className     = 'form-status success';
-          status.style.display = 'block';
-          form.reset();
-        } else {
-          return res.json().then(function (data) {
-            throw new Error(data.error || 'Submission failed');
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        })
+          .then(function (res) {
+            if (res.ok) {
+              status.textContent = 'Message sent \u2014 we\u2019ll be in touch shortly.';
+              status.className = 'form-status success';
+              status.style.display = 'block';
+              form.reset();
+            } else {
+              return res.json().then(function (data) {
+                throw new Error(data.error || 'Submission failed');
+              });
+            }
+          })
+          .catch(function () {
+            status.textContent = 'Something went wrong. Please email us directly at jaron@authoritativeproductions.com';
+            status.className = 'form-status error';
+            status.style.display = 'block';
+          })
+          .finally(function () {
+            submit.disabled = false;
+            submit.innerHTML = 'Send Message <span aria-hidden="true">\u2192</span>';
           });
-        }
-      })
-      .catch(function () {
-        status.textContent   = 'Something went wrong. Please email us directly at jaron@authoritativeproductions.com';
-        status.className     = 'form-status error';
-        status.style.display = 'block';
-      })
-      .finally(function () {
-        submit.disabled   = false;
-        submit.innerHTML  = 'Send Message <span aria-hidden="true">\u2192</span>';
       });
-    });
-  }());
+    }());
   </script>
 
 </body>
