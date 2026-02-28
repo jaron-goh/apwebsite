@@ -1124,7 +1124,12 @@
         font-size: min(0.65rem, 2.4vw);
         line-height: 1.9;
         text-align: center;
-        max-width: 22rem;
+        max-width: 100%;
+      }
+
+      .hero-tagline span {
+        white-space: normal !important;
+        display: inline-block;
       }
 
       .hero-scroll {
@@ -1960,15 +1965,21 @@
       transform: translateY(10px);
       transition: opacity 0.75s ease, filter 0.75s ease, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
     }
+
     .reveal-blur.in-view {
       opacity: 1;
       filter: blur(0px);
       transform: translateY(0);
     }
-    @media (prefers-reduced-motion: reduce) {
-      .reveal-blur { opacity: 1 !important; filter: none !important; transform: none !important; transition: none !important; }
-    }
 
+    @media (prefers-reduced-motion: reduce) {
+      .reveal-blur {
+        opacity: 1 !important;
+        filter: none !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -2002,8 +2013,9 @@
   <svg aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
     <defs>
       <filter id="glass-warp" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
-        <feTurbulence type="turbulence" baseFrequency="0.013 0.021" numOctaves="3" seed="7" stitchTiles="stitch" result="noise"/>
-        <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+        <feTurbulence type="turbulence" baseFrequency="0.013 0.021" numOctaves="3" seed="7" stitchTiles="stitch"
+          result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G" />
       </filter>
     </defs>
   </svg>
@@ -2047,7 +2059,9 @@
     <div class="hero-meta">
       <p class="hero-tagline">
         Production-grade creative, powered by&nbsp;AI.<br />
-        <span style="white-space:nowrap">AI UGC · </span><span style="white-space:nowrap">Generative Video · </span><span style="white-space:nowrap">AI Staging · </span><span style="white-space:nowrap">Brand Campaigns.</span>
+        <span style="white-space:nowrap">AI UGC · </span><span style="white-space:nowrap">Generative Video ·
+        </span><span style="white-space:nowrap">AI Staging · </span><span style="white-space:nowrap">Brand
+          Campaigns.</span>
       </p>
       <a href="#work" class="hero-scroll" aria-label="Scroll down">
         <div class="hero-scroll-line"></div>
@@ -2096,7 +2110,8 @@
           <p class="service-num">01 /</p>
           <h3 class="service-name">AI UGC<br />&amp; Avatars</h3>
           <p class="service-desc">
-            Digital presenters and UGC-style content without the talent fees, scheduling, or usage restrictions. Consistent, on-brand, and ready to scale across any campaign.
+            Digital presenters and UGC-style content without the talent fees, scheduling, or usage restrictions.
+            Consistent, on-brand, and ready to scale across any campaign.
           </p>
           <div class="service-tools">
             <span class="service-tool-tag">HeyGen</span>
@@ -2112,7 +2127,8 @@
           <p class="service-num">02 /</p>
           <h3 class="service-name">Generative<br />AI Video</h3>
           <p class="service-desc">
-            Campaign films, social ads, and branded video — concept to delivery — produced with generative AI at a fraction of the traditional timeline and budget.
+            Campaign films, social ads, and branded video — concept to delivery — produced with generative AI at a
+            fraction of the traditional timeline and budget.
           </p>
           <div class="service-tools">
             <span class="service-tool-tag">Kling 3.0</span>
@@ -2130,7 +2146,8 @@
           <p class="service-num">03 /</p>
           <h3 class="service-name">AI Staging<br />Services</h3>
           <p class="service-desc">
-            Photorealistic virtual staging for property listings and commercial spaces. Furnish, style, and present any room — no furniture, no photographer, no wait.
+            Photorealistic virtual staging for property listings and commercial spaces. Furnish, style, and present any
+            room — no furniture, no photographer, no wait.
           </p>
           <div class="service-tools">
             <span class="service-tool-tag">Midjourney</span>
@@ -2144,7 +2161,8 @@
           <p class="service-num">04 /</p>
           <h3 class="service-name">Corporate<br />Production</h3>
           <p class="service-desc">
-            Traditional photo, video, and event production — backed by 8+ years of blue-chip delivery. Full crew, full service, from brief to final cut.
+            Traditional photo, video, and event production — backed by 8+ years of blue-chip delivery. Full crew, full
+            service, from brief to final cut.
           </p>
           <div class="service-tools">
             <span class="service-tool-tag">Full Crew</span>
@@ -2254,8 +2272,9 @@
         <div class="process-card process-card--discovery">
           <div class="process-card-header">
             <div class="process-card-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
               </svg>
             </div>
             <p class="process-card-num">01 /</p>
@@ -2278,9 +2297,10 @@
         <div class="process-card">
           <div class="process-card-header">
             <div class="process-card-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polygon points="23 7 16 12 23 17 23 7"/>
-                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="23 7 16 12 23 17 23 7" />
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
               </svg>
             </div>
             <p class="process-card-num">02 /</p>
@@ -2301,9 +2321,10 @@
         <div class="process-card">
           <div class="process-card-header">
             <div class="process-card-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="22" y1="2" x2="11" y2="13"/>
-                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="22" y1="2" x2="11" y2="13" />
+                <polygon points="22 2 15 22 11 13 2 9 22 2" />
               </svg>
             </div>
             <p class="process-card-num">03 /</p>
@@ -2334,51 +2355,95 @@
       <div class="clients-grid">
         <div class="logo-track" aria-hidden="true">
           <!-- first copy -->
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/unilever-958x575.png" alt="Unilever" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/fedex.png" alt="FedEx" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/DBS_Bank_Logo_%28alternative%29.svg.png" alt="DBS" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/Citi.svg.png" alt="Citi" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/conrad.png" alt="Conrad Hotels" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/Alan-Walker-logo_1.png" alt="Alan Walker" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/nus.png" alt="NUS" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/ntu.png" alt="NTU" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/smu-logo.png" alt="SMU" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/SP_Group_logo.svg.png" alt="SP Group" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/NDP%2B2023%2BLogo.png" alt="NDP 2023" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/spforce.png" alt="Singapore Police Force" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/mindef.png" alt="MINDEF" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/psdpmo.png" alt="Public Service Division" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/PA.png" alt="People's Association" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/cordlife.png" alt="Cordlife" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/xiamenair.png" alt="XiamenAir" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/unnamed%20%2811%29.png" alt="National Heritage Board" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/ffth.png" alt="Food from the Heart" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/creativeminds.png" alt="Collective Minds" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/unnamed.png" alt="w.media" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/images.png" alt="Accel Scaling" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/unilever-958x575.png" alt="Unilever" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/fedex.png" alt="FedEx" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/DBS_Bank_Logo_%28alternative%29.svg.png" alt="DBS" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/Citi.svg.png" alt="Citi" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/conrad.png" alt="Conrad Hotels" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/Alan-Walker-logo_1.png" alt="Alan Walker" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/nus.png"
+              alt="NUS" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/ntu.png"
+              alt="NTU" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/smu-logo.png" alt="SMU" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/SP_Group_logo.svg.png" alt="SP Group" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/NDP%2B2023%2BLogo.png" alt="NDP 2023" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/spforce.png" alt="Singapore Police Force" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/mindef.png" alt="MINDEF" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/psdpmo.png" alt="Public Service Division" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/PA.png"
+              alt="People's Association" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/cordlife.png" alt="Cordlife" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/xiamenair.png" alt="XiamenAir" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/unnamed%20%2811%29.png" alt="National Heritage Board" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/ffth.png" alt="Food from the Heart" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/creativeminds.png" alt="Collective Minds" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/unnamed.png" alt="w.media" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/images.png" alt="Accel Scaling" /></div>
           <!-- duplicate for seamless loop -->
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/unilever-958x575.png" alt="" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/fedex.png" alt="" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/DBS_Bank_Logo_%28alternative%29.svg.png" alt="" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/Citi.svg.png" alt="" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/conrad.png" alt="" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/Alan-Walker-logo_1.png" alt="" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/nus.png" alt="" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/ntu.png" alt="" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/smu-logo.png" alt="" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/SP_Group_logo.svg.png" alt="" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/NDP%2B2023%2BLogo.png" alt="" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/spforce.png" alt="" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/mindef.png" alt="" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/psdpmo.png" alt="" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/PA.png" alt="" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/cordlife.png" alt="" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/xiamenair.png" alt="" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/unnamed%20%2811%29.png" alt="" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/ffth.png" alt="" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/creativeminds.png" alt="" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/unnamed.png" alt="" /></div>
-          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/images.png" alt="" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/unilever-958x575.png" alt="" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/fedex.png" alt="" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/DBS_Bank_Logo_%28alternative%29.svg.png" alt="" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/Citi.svg.png" alt="" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/conrad.png" alt="" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/Alan-Walker-logo_1.png" alt="" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/nus.png"
+              alt="" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/ntu.png"
+              alt="" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/smu-logo.png" alt="" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/SP_Group_logo.svg.png" alt="" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/NDP%2B2023%2BLogo.png" alt="" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/spforce.png" alt="" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/mindef.png" alt="" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/psdpmo.png" alt="" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/PA.png"
+              alt="" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/cordlife.png" alt="" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/xiamenair.png" alt="" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/unnamed%20%2811%29.png" alt="" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/ffth.png" alt="" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/creativeminds.png" alt="" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/unnamed.png" alt="" /></div>
+          <div class="client-item"><img loading="lazy" class="client-logo-img"
+              src="BRAND%20ASSETS/BRAND%20LOGO/images.png" alt="" /></div>
         </div>
       </div>
 
@@ -2418,10 +2483,15 @@
       <div class="about-body">
         <h2 class="about-title">8+ Years in<br />Production. Now<br />Supercharged with AI.</h2>
         <p class="about-text">
-          Authoritative Productions is a Singapore-based creative studio with over 8 years of production experience behind it. We deliver corporate video, live events, and institutional content through traditional crews — and now offer a full suite of AI-powered creative services for brands that need to move faster without sacrificing quality.
+          Authoritative Productions is a Singapore-based creative studio with over 8 years of production experience
+          behind it. We deliver corporate video, live events, and institutional content through traditional crews — and
+          now offer a full suite of AI-powered creative services for brands that need to move faster without sacrificing
+          quality.
         </p>
         <p class="about-text">
-          Not a pure AI startup. Not a legacy production house. A creative studio built on real-world production credibility, equipped with AI tools that let us deliver more, faster, and at a fraction of the traditional cost.
+          Not a pure AI startup. Not a legacy production house. A creative studio built on real-world production
+          credibility, equipped with AI tools that let us deliver more, faster, and at a fraction of the traditional
+          cost.
         </p>
 
         <div class="about-stats">
