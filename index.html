@@ -4,10 +4,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Authoritative Productions — AI Creative Studio</title>
+  <title>Authoritative Productions — AI Creative Studio, Singapore</title>
   <meta name="description"
-    content="Singapore's AI creative studio combining 8+ years of production experience with generative AI video, AI UGC avatars, and virtual staging services." />
+    content="AI-powered creative production studio in Singapore. AI UGC, generative video, virtual staging, and corporate production — backed by 9+ years of blue-chip delivery." />
   <link rel="canonical" href="https://authoritativeproductions.com/" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Authoritative Productions — AI Creative Studio, Singapore" />
+  <meta property="og:description" content="AI-powered creative production studio in Singapore. AI UGC, generative video, virtual staging, and corporate production." />
+  <meta property="og:image" content="https://authoritativeproductions.com/BRAND%20ASSETS/og-image.jpg" />
+  <meta property="og:url" content="https://authoritativeproductions.com" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Authoritative Productions" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Authoritative Productions — AI Creative Studio, Singapore" />
+  <meta name="twitter:description" content="AI-powered creative production studio in Singapore. AI UGC, generative video, virtual staging, and corporate production." />
+  <meta name="twitter:image" content="https://authoritativeproductions.com/BRAND%20ASSETS/og-image.jpg" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self'; connect-src https://formspree.io; form-action https://formspree.io; frame-ancestors 'none'; upgrade-insecure-requests;" />
   <link rel="icon" type="image/png" href="BRAND%20ASSETS/LOGO3BLK.png" />
@@ -1197,7 +1209,7 @@
         flex: none !important;
         height: 220px;
         border-radius: 12px;
-        transition: height 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       .portfolio-card.is-active {
@@ -1283,13 +1295,13 @@
 
       .footer-brand {
         padding-bottom: 1.5rem;
+        text-align: center;
       }
 
       .footer-nav {
         display: grid;
-        grid-template-columns: repeat(3, auto);
-        justify-content: flex-start;
-        gap: 0.75rem 2rem;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem 1rem;
         border-top: 1px solid var(--dim);
         padding: 1.5rem 0;
       }
@@ -1994,12 +2006,46 @@
 
     }
 
+    /* ─── Mid-page CTA bars ─── */
+    .mid-cta-bar {
+      padding: 0;
+    }
+
+    .mid-cta-inner {
+      padding-top: 2rem !important;
+      padding-bottom: 2rem !important;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .mid-cta-link {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      opacity: 0.5;
+      transition: opacity 0.2s;
+    }
+
+    .mid-cta-link:hover {
+      opacity: 1;
+    }
+
+    @media (max-width: 900px) {
+      .mid-cta-inner {
+        justify-content: center;
+      }
+    }
+
     /* ── Blur-reveal: content fades in to focus on scroll ── */
     .reveal-blur {
       opacity: 0;
       filter: blur(12px);
       transform: translateY(10px);
-      transition: opacity 0.75s ease, filter 0.75s ease, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1), flex-grow 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: opacity 0.75s ease, filter 0.75s ease, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1), flex-grow 0.8s cubic-bezier(0.4, 0, 0.2, 1), height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .reveal-blur.in-view {
@@ -2116,7 +2162,7 @@
       <span>Corporate Production</span><span class="dot"> · </span>
       <span>Brand Campaigns</span><span class="dot"> · </span>
       <span>Trusted by DBS, Citi, Unilever &amp; Government Agencies</span><span class="dot"> · </span>
-      <span>8+ Years</span><span class="dot"> · </span>
+      <span>9+ Years</span><span class="dot"> · </span>
       <span>Singapore</span><span class="dot"> · </span>
       <!-- duplicate for seamless loop -->
       <span>AI UGC &amp; Avatars</span><span class="dot"> · </span>
@@ -2125,7 +2171,7 @@
       <span>Corporate Production</span><span class="dot"> · </span>
       <span>Brand Campaigns</span><span class="dot"> · </span>
       <span>Trusted by DBS, Citi, Unilever &amp; Government Agencies</span><span class="dot"> · </span>
-      <span>8+ Years</span><span class="dot"> · </span>
+      <span>9+ Years</span><span class="dot"> · </span>
       <span>Singapore</span><span class="dot"> · </span>
     </div>
   </div>
@@ -2197,7 +2243,7 @@
           <p class="service-num">04 /</p>
           <h3 class="service-name">Corporate<br />Production</h3>
           <p class="service-desc">
-            Traditional photo, video, and event production — backed by 8+ years of blue-chip delivery. Full crew, full
+            Traditional photo, video, and event production — backed by 9+ years of blue-chip delivery. Full crew, full
             service, from brief to final cut.
           </p>
           <div class="service-tools">
@@ -2209,6 +2255,13 @@
       </div>
     </div>
   </section>
+
+  <!-- ─── Mid-page CTA (after services) ─── -->
+  <div class="mid-cta-bar section-border">
+    <div class="section-inner mid-cta-inner">
+      <a href="#contact" class="mid-cta-link">Tell Us What You Need →</a>
+    </div>
+  </div>
 
   <!-- ─── PORTFOLIO ─── -->
   <section id="work" class="section-border">
@@ -2527,6 +2580,13 @@
     </div>
   </section>
 
+  <!-- ─── Mid-page CTA (after clients) ─── -->
+  <div class="mid-cta-bar section-border">
+    <div class="section-inner mid-cta-inner">
+      <a href="#contact" class="mid-cta-link">Get in Touch →</a>
+    </div>
+  </div>
+
   <!-- ─── ABOUT ─── -->
   <section id="about" class="section-border">
     <div class="section-inner">
@@ -2538,9 +2598,9 @@
       </div>
 
       <div class="about-body">
-        <h2 class="about-title">8+ Years in<br />Production. Now<br />Supercharged with AI.</h2>
+        <h2 class="about-title">9+ Years in<br />Production. Now<br />Supercharged with AI.</h2>
         <p class="about-text">
-          Authoritative Productions is a Singapore-based creative studio with over 8 years of production experience
+          Authoritative Productions is a Singapore-based creative studio with over 9 years of production experience
           behind it. We deliver corporate video, live events, and institutional content through traditional crews — and
           now offer a full suite of AI-powered creative services for brands that need to move faster without sacrificing
           quality.
@@ -2553,7 +2613,7 @@
 
         <div class="about-stats">
           <div>
-            <p class="about-stat-num">8+</p>
+            <p class="about-stat-num">9+</p>
             <p class="about-stat-label">Years in Production</p>
           </div>
           <div>
