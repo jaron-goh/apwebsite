@@ -8,6 +8,8 @@
   <meta name="description"
     content="Singapore's AI creative studio combining 8+ years of production experience with generative AI video, AI UGC avatars, and virtual staging services." />
   <link rel="canonical" href="https://authoritativeproductions.com/" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self'; connect-src https://formspree.io; form-action https://formspree.io; frame-ancestors 'none'; upgrade-insecure-requests;" />
   <link rel="icon" type="image/png" href="BRAND%20ASSETS/LOGO3BLK.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -550,7 +552,7 @@
       overflow: hidden;
       cursor: pointer;
       background: #0a0a0a;
-      transition: flex-grow 0.8s ease-in-out;
+      transition: flex-grow 0.8s cubic-bezier(0.4, 0, 0.2, 1);
       min-width: 0;
     }
 
@@ -1991,7 +1993,7 @@
       opacity: 0;
       filter: blur(12px);
       transform: translateY(10px);
-      transition: opacity 0.75s ease, filter 0.75s ease, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: opacity 0.75s ease, filter 0.75s ease, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1), flex-grow 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .reveal-blur.in-view {
@@ -2824,36 +2826,40 @@
       var grid = document.querySelector('.portfolio-grid');
       if (!grid) return;
 
+      var collapseTimer = null;
+
       function activateCard(card) {
-        var vid = card.querySelector('.card-video');
-        var src = vid && vid.querySelector('source');
+        /* Swap active state without touching has-hover (no flicker between cards) */
+        document.querySelectorAll('.portfolio-card.is-active').forEach(function (c) {
+          if (c === card) return;
+          c.classList.remove('is-active');
+          var v = c.querySelector('.card-video');
+          if (v) { v.pause(); v.currentTime = 0; }
+        });
         grid.classList.add('has-hover');
         card.classList.add('is-active');
+        var vid = card.querySelector('.card-video');
+        var src = vid && vid.querySelector('source');
         if (src && src.getAttribute('src')) {
           vid.play().catch(function () { });
         }
       }
 
-      function deactivateCard(card) {
-        var vid = card.querySelector('.card-video');
+      function deactivateAll() {
+        document.querySelectorAll('.portfolio-card.is-active').forEach(function (c) {
+          c.classList.remove('is-active');
+          var v = c.querySelector('.card-video');
+          if (v) { v.pause(); v.currentTime = 0; }
+        });
         grid.classList.remove('has-hover');
-        card.classList.remove('is-active');
-        if (vid) { vid.pause(); vid.currentTime = 0; }
       }
 
+      /* Desktop: activate immediately on card enter, collapse when leaving the grid */
       document.querySelectorAll('.portfolio-card').forEach(function (card) {
-        /* Desktop: hover — debounced so quick sweeps don't trigger */
-        var hoverTimer = null;
         card.addEventListener('mouseenter', function () {
           if (window.innerWidth <= 900) return;
-          clearTimeout(hoverTimer);
-          hoverTimer = setTimeout(function () { activateCard(card); }, 180);
-        });
-
-        card.addEventListener('mouseleave', function () {
-          if (window.innerWidth <= 900) return;
-          clearTimeout(hoverTimer);
-          deactivateCard(card);
+          clearTimeout(collapseTimer);
+          activateCard(card);
         });
 
         /* Keyboard: Enter/Space toggle */
@@ -2861,7 +2867,7 @@
           if (e.key !== 'Enter' && e.key !== ' ') return;
           e.preventDefault();
           var isAlreadyActive = card.classList.contains('is-active');
-          document.querySelectorAll('.portfolio-card.is-active').forEach(deactivateCard);
+          deactivateAll();
           if (!isAlreadyActive) activateCard(card);
         });
 
@@ -2870,10 +2876,18 @@
           if (window.innerWidth > 900) return;
           e.preventDefault();
           var isAlreadyActive = card.classList.contains('is-active');
-          /* collapse any open card */
-          document.querySelectorAll('.portfolio-card.is-active').forEach(deactivateCard);
+          deactivateAll();
           if (!isAlreadyActive) activateCard(card);
         }, { passive: false });
+      });
+
+      /* Collapse after a brief grace period when cursor leaves the grid */
+      grid.addEventListener('mouseleave', function () {
+        if (window.innerWidth <= 900) return;
+        collapseTimer = setTimeout(deactivateAll, 80);
+      });
+      grid.addEventListener('mouseenter', function () {
+        clearTimeout(collapseTimer);
       });
     }());
   </script>
@@ -2940,7 +2954,7 @@
         status.style.display = 'none';
         status.className = 'form-status';
 
-        fetch(form.action, {
+        fetch('https://formspree.io/f/mojnbvkn', {
           method: 'POST',
           body: new FormData(form),
           headers: { 'Accept': 'application/json' }
@@ -2952,9 +2966,8 @@
               status.style.display = 'block';
               form.reset();
             } else {
-              return res.json().then(function (data) {
-                throw new Error(data.error || 'Submission failed');
-              });
+              /* Intentionally discard API error text — never reflect server response into DOM */
+              throw new Error('Submission failed');
             }
           })
           .catch(function () {
@@ -2964,7 +2977,12 @@
           })
           .finally(function () {
             submit.disabled = false;
-            submit.innerHTML = 'Get in Touch <span aria-hidden="true">\u2192</span>';
+            /* Use safe DOM construction — never innerHTML with dynamic content */
+            var arrow = document.createElement('span');
+            arrow.setAttribute('aria-hidden', 'true');
+            arrow.textContent = '\u2192';
+            submit.textContent = 'Get in Touch ';
+            submit.appendChild(arrow);
           });
       });
     }());
