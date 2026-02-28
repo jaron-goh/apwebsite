@@ -2506,7 +2506,6 @@
       </p>
 
       <!-- ─── Testimonial ─── -->
-      <!-- TODO: Replace placeholder with a real client quote before launch -->
       <div class="testimonial-block">
         <span class="testimonial-quote-mark" aria-hidden="true">"</span>
         <p class="testimonial-text">
@@ -2576,7 +2575,7 @@
         <span class="muted">produce</span><br />
         smarter?
       </h2>
-      <form class="contact-form" id="contact-form" action="https://formspree.io/f/mojnbvkn" method="POST" novalidate>
+      <form class="contact-form" id="contact-form" action="https://formspree.io/f/mojnbvkn" method="POST">
         <!-- Formspree spam honeypot -->
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
         <input type="hidden" name="_subject" value="New inquiry — Authoritative Productions" />
@@ -2584,18 +2583,18 @@
         <div class="form-row">
           <div class="form-field">
             <label class="form-label" for="cf-name">Name *</label>
-            <input class="form-input" type="text" id="cf-name" name="name" placeholder="Your name" required />
+            <input class="form-input" type="text" id="cf-name" name="name" placeholder="Your name" required maxlength="100" />
           </div>
           <div class="form-field">
             <label class="form-label" for="cf-email">Email *</label>
-            <input class="form-input" type="email" id="cf-email" name="email" placeholder="your@email.com" required />
+            <input class="form-input" type="email" id="cf-email" name="email" placeholder="your@email.com" required maxlength="254" />
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-field">
             <label class="form-label" for="cf-company">Company</label>
-            <input class="form-input" type="text" id="cf-company" name="company" placeholder="Optional" />
+            <input class="form-input" type="text" id="cf-company" name="company" placeholder="Optional" maxlength="150" />
           </div>
           <div class="form-field">
             <label class="form-label" for="cf-service">Service</label>
@@ -2613,7 +2612,7 @@
         <div class="form-field">
           <label class="form-label" for="cf-message">Message *</label>
           <textarea class="form-textarea" id="cf-message" name="message" placeholder="Tell us about your project..."
-            required></textarea>
+            required maxlength="5000"></textarea>
         </div>
 
         <div class="form-status" id="cf-status" role="status" aria-live="polite"></div>
@@ -2642,9 +2641,7 @@
     </ul>
 
     <div class="footer-contact">
-      <!-- TODO: Update email address before launch -->
       <a href="mailto:hello@authoritativeproductions.com">hello@authoritativeproductions.com</a>
-      <!-- TODO: Update LinkedIn URL before launch -->
       <a href="https://linkedin.com/company/authoritative-productions" target="_blank"
         rel="noopener noreferrer">LinkedIn</a>
     </div>
@@ -2971,7 +2968,7 @@
             }
           })
           .catch(function () {
-            status.textContent = 'Something went wrong. Please email us directly at jaron@authoritativeproductions.com';
+            status.textContent = 'Something went wrong. Please email us directly at hello@authoritativeproductions.com';
             status.className = 'form-status error';
             status.style.display = 'block';
           })
