@@ -543,21 +543,23 @@
 
     .portfolio-card {
       position: relative;
-      flex: 1;
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: 0;
       border-radius: 18px;
       overflow: hidden;
       cursor: pointer;
       background: #0a0a0a;
-      transition: flex 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+      transition: flex-grow 0.8s ease-in-out;
       min-width: 0;
     }
 
     .portfolio-grid.has-hover .portfolio-card {
-      flex: 0.85;
+      flex-grow: 0.85;
     }
 
     .portfolio-grid.has-hover .portfolio-card.is-active {
-      flex: 3.5;
+      flex-grow: 3.5;
     }
 
     .card-bg {
