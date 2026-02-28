@@ -5,6 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Authoritative Productions — AI Creative Studio</title>
+  <meta name="description" content="Singapore's AI creative studio combining 8+ years of production experience with generative AI video, AI UGC avatars, and virtual staging services." />
+  <link rel="canonical" href="https://authoritativeproductions.com/" />
   <link rel="icon" type="image/png" href="BRAND%20ASSETS/LOGO3BLK.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1158,11 +1160,48 @@
         font-size: clamp(3rem, 10vw, 6rem);
       }
 
-      footer {
-        padding: 1.5rem;
+      .process-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .process-step {
+        border-right: none;
+        border-bottom: 1px solid var(--dim);
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+
+      .process-step:last-child {
+        border-bottom: none;
+      }
+
+      .cta-bridge {
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.4rem;
+      }
+
+      .testimonial-block {
+        padding: 2rem 1.5rem;
+      }
+
+      .testimonial-quote-mark {
+        left: 1.5rem;
+      }
+
+      footer {
+        grid-template-columns: 1fr;
+        padding: 2rem 1.5rem;
+        gap: 1.5rem;
+      }
+
+      .footer-nav {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .footer-contact {
+        align-items: flex-start;
       }
 
       .section-inner {
@@ -1217,6 +1256,250 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* ─── CTA BRIDGE (after work section) ─── */
+    .cta-bridge {
+      border-top: 1px solid var(--dim);
+      margin-top: 4rem;
+      padding-top: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .cta-bridge-question {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .cta-bridge-body {
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      opacity: 0.45;
+      margin-top: 0.5rem;
+      line-height: 1.8;
+    }
+
+    .cta-bridge-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--black);
+      background: var(--white);
+      text-decoration: none;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 1.1rem 2rem;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+      flex-shrink: 0;
+    }
+
+    .cta-bridge-btn:hover { opacity: 0.85; }
+
+    /* ─── HOW WE WORK ─── */
+    #process .section-inner {
+      padding: 6rem 3rem;
+    }
+
+    .process-header {
+      margin-bottom: 4rem;
+    }
+
+    .process-header .label {
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .process-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7vw, 9rem);
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--dim);
+    }
+
+    .process-step {
+      padding: 3rem 2rem 3rem 0;
+      border-right: 1px solid var(--dim);
+    }
+
+    .process-step:last-child {
+      border-right: none;
+      padding-right: 0;
+    }
+
+    .process-step:not(:first-child) {
+      padding-left: 2rem;
+    }
+
+    .process-step-num {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      opacity: 0.3;
+      margin-bottom: 2rem;
+    }
+
+    .process-step-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.8rem, 2.5vw, 3rem);
+      line-height: 1;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .process-step-desc {
+      font-size: 0.68rem;
+      line-height: 1.9;
+      opacity: 0.45;
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── TESTIMONIAL ─── */
+    .testimonial-block {
+      margin-top: 4rem;
+      padding: 3rem;
+      border: 1px solid var(--dim);
+      position: relative;
+    }
+
+    .testimonial-quote-mark {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      line-height: 0.6;
+      opacity: 0.12;
+      position: absolute;
+      top: 1.5rem;
+      left: 2.5rem;
+      user-select: none;
+    }
+
+    .testimonial-text {
+      font-size: 0.78rem;
+      line-height: 2;
+      opacity: 0.75;
+      letter-spacing: 0.04em;
+      font-style: italic;
+      max-width: 680px;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .testimonial-attribution {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .testimonial-name {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .testimonial-role {
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.3;
+    }
+
+    /* ─── CLIENTS CONTEXT LINE ─── */
+    .clients-context {
+      margin-top: 2.5rem;
+      font-size: 0.68rem;
+      line-height: 1.9;
+      opacity: 0.4;
+      letter-spacing: 0.04em;
+      max-width: 680px;
+      border-top: 1px solid var(--dim);
+      padding-top: 2rem;
+    }
+
+    /* ─── FOOTER (expanded) ─── */
+    footer {
+      padding: 3rem;
+      border-top: 1px solid var(--dim);
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: start;
+      gap: 2rem;
+      opacity: 1;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .footer-copy {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.3;
+    }
+
+    .footer-tagline {
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.2;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      justify-content: center;
+    }
+
+    .footer-nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.3;
+      transition: opacity 0.2s;
+    }
+
+    .footer-nav a:hover { opacity: 0.8; }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.5rem;
+    }
+
+    .footer-contact a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.3;
+      transition: opacity 0.2s;
+    }
+
+    .footer-contact a:hover { opacity: 0.7; }
 
     /* ─── Custom Cursor (mouse/fine-pointer only) ─── */
     @media (hover: hover) and (pointer: fine) {
@@ -1289,6 +1572,30 @@
       nav { padding: 1.5rem max(3rem, calc((100vw - 1600px) / 2)); }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Authoritative Productions",
+    "description": "Singapore's AI creative studio specialising in generative AI video, AI UGC avatars, virtual staging, and corporate production.",
+    "url": "https://authoritativeproductions.com",
+    "areaServed": "Singapore",
+    "foundingDate": "2025",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "SG",
+      "addressRegion": "Singapore"
+    },
+    "serviceType": [
+      "Generative AI Video",
+      "AI UGC & Avatars",
+      "AI Staging",
+      "Corporate Video Production",
+      "Brand Film"
+    ],
+    "knowsAbout": ["Artificial Intelligence", "Video Production", "Brand Campaigns", "Virtual Staging"]
+  }
+  </script>
 </head>
 
 <body>
@@ -1304,6 +1611,7 @@
     <ul class="nav-links">
       <li><a href="#work">Work</a></li>
       <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
       <li><a href="#clients">Clients</a></li>
       <li><a href="#about">About</a></li>
     </ul>
@@ -1332,7 +1640,7 @@
     <div class="hero-meta">
       <p class="hero-tagline">
         Where 8+ years of production authority meets cutting-edge AI.<br />
-        AI UGC · Generative Video · AI Staging · Brand Campaigns.
+        Faster than traditional. More credible than pure AI.
       </p>
       <a href="#work" class="hero-scroll" aria-label="Scroll down">
         <div class="hero-scroll-line"></div>
@@ -1508,6 +1816,53 @@
         </div>
 
       </div>
+
+      <!-- ─── CTA Bridge ─── -->
+      <div class="cta-bridge">
+        <div>
+          <p class="cta-bridge-question">See something you like?</p>
+          <p class="cta-bridge-body">Let's talk about what we can build for your brand.</p>
+        </div>
+        <a href="#contact" class="cta-bridge-btn">Start a Project →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── HOW WE WORK ─── -->
+  <section id="process" class="section-border">
+    <div class="section-inner">
+      <div class="process-header">
+        <span class="label">The Process</span>
+        <h2 class="process-title">How We<br />Work</h2>
+      </div>
+
+      <div class="process-steps">
+        <div class="process-step">
+          <p class="process-step-num">01 /</p>
+          <h3 class="process-step-name">Discovery</h3>
+          <p class="process-step-desc">
+            Brief + objectives. You come with a goal — we handle the brief-to-strategy translation.
+            One call is all it takes to scope the project, align on deliverables, and lock a timeline.
+          </p>
+        </div>
+        <div class="process-step">
+          <p class="process-step-num">02 /</p>
+          <h3 class="process-step-name">Production</h3>
+          <p class="process-step-desc">
+            AI-powered or traditional, depending on scope. We deploy the right tools and talent —
+            from generative video pipelines to full production crews with established freelancer networks.
+          </p>
+        </div>
+        <div class="process-step">
+          <p class="process-step-num">03 /</p>
+          <h3 class="process-step-name">Delivery</h3>
+          <p class="process-step-desc">
+            Final assets, revisions included, fast turnaround. Enterprise clients get the compliance
+            and sign-off process they require. New clients can be live from 5 days.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1553,6 +1908,27 @@
           <p class="client-sector">Events 2024</p>
         </div>
       </div>
+
+      <!-- Industry context -->
+      <p class="clients-context">
+        From regulated financial institutions to government agencies — we understand the compliance
+        expectations and brand standards that come with enterprise work.
+      </p>
+
+      <!-- ─── Testimonial ─── -->
+      <!-- TODO: Replace placeholder with a real client quote before launch -->
+      <div class="testimonial-block">
+        <span class="testimonial-quote-mark" aria-hidden="true">"</span>
+        <p class="testimonial-text">
+          "The team understood our brand standards from day one. What took our previous agency weeks,
+          they delivered in days — and the quality exceeded expectations."
+        </p>
+        <div class="testimonial-attribution">
+          <span class="testimonial-name">Head of Marketing</span>
+          <span class="testimonial-role">Major Singapore Financial Institution</span>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1593,8 +1969,8 @@
             <p class="about-stat-label">Core Service Pillars</p>
           </div>
           <div>
-            <p class="about-stat-num">8+</p>
-            <p class="about-stat-label">Blue-Chip Clients Served</p>
+            <p class="about-stat-num">10+</p>
+            <p class="about-stat-label">AI Tools in Stack</p>
           </div>
           <div>
             <p class="about-stat-num">SG</p>
@@ -1645,9 +2021,12 @@
             <select class="form-select" id="cf-service" name="service">
               <option value="" disabled selected>Select a service</option>
               <option value="Brand Film">Brand Film</option>
-              <option value="Corporate Video &amp; Events">Corporate Video &amp; Events</option>
+              <option value="Generative AI Video">Generative AI Video</option>
               <option value="AI Avatar Campaigns">AI Avatar Campaigns</option>
+              <option value="Corporate Video &amp; Events">Corporate Video &amp; Events</option>
               <option value="Real Estate AI Staging">Real Estate AI Staging</option>
+              <option value="AI Staging — Commercial/Corporate">AI Staging — Commercial/Corporate</option>
+              <option value="Social Media Content">Social Media Content</option>
               <option value="Other">Other</option>
             </select>
           </div>
@@ -1669,8 +2048,26 @@
 
   <!-- ─── FOOTER ─── -->
   <footer>
-    <span class="footer-copy">&copy; 2026 Authoritative Productions</span>
-    <span class="footer-right">AP &mdash; Est. 2025 &mdash; Singapore</span>
+    <div class="footer-brand">
+      <span class="footer-copy">&copy; 2026 Authoritative Productions</span>
+      <span class="footer-tagline">AP &mdash; Est. 2025 &mdash; Singapore</span>
+    </div>
+
+    <ul class="footer-nav" aria-label="Footer navigation">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#clients">Clients</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="footer-contact">
+      <!-- TODO: Update email address before launch -->
+      <a href="mailto:hello@authoritativeproductions.com">hello@authoritativeproductions.com</a>
+      <!-- TODO: Update LinkedIn URL before launch -->
+      <a href="https://linkedin.com/company/authoritative-productions" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
   </footer>
 
   <!-- ─── Hero parallax + custom cursor ─── -->
