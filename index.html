@@ -755,14 +755,42 @@
     }
 
     .clients-grid {
+      overflow: hidden;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .clients-grid::before,
+    .clients-grid::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 8rem;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .clients-grid::before {
+      left: 0;
+      background: linear-gradient(to right, #000, transparent);
+    }
+
+    .clients-grid::after {
+      right: 0;
+      background: linear-gradient(to left, #000, transparent);
+    }
+
+    .logo-track {
       display: flex;
-      flex-wrap: wrap;
       gap: 1rem;
-      justify-content: center;
-      align-items: center;
+      width: max-content;
+      animation: marquee 35s linear infinite reverse;
+      will-change: transform;
     }
 
     .client-item {
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -2047,42 +2075,35 @@
     <div class="section-inner">
       <div class="clients-header">
         <span class="label" style="margin-bottom:1.5rem;display:block;">Trusted By</span>
-        <h2 class="clients-title">Blue-Chip<br />Roster</h2>
+        <h2 class="clients-title">Trusted by<br />Industry Leaders</h2>
       </div>
 
       <div class="clients-grid">
-        <div class="client-item">
-          <img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/unilever-958x575.png" alt="Unilever" loading="lazy" />
-        </div>
-        <div class="client-item">
-          <img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/FedEx-logo-1.webp" alt="FedEx" loading="lazy" />
-        </div>
-        <div class="client-item">
-          <img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/conrad-hotels3274.logowik.com.webp" alt="Conrad Hotels" loading="lazy" />
-        </div>
-        <div class="client-item">
-          <img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/Alan-Walker-logo_1.png" alt="Alan Walker" loading="lazy" />
-        </div>
-        <div class="client-item">
-          <img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/Cordlife_Group_Limited_Logo.jpg" alt="Cordlife" loading="lazy" />
-        </div>
-        <div class="client-item">
-          <img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/NUS%20Logo%20Full%20Colour%204C%20%5BConverted%5D.jpg" alt="National University of Singapore" loading="lazy" />
-        </div>
-        <div class="client-item">
-          <img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/smu-logo.png" alt="Singapore Management University" loading="lazy" />
-        </div>
-        <div class="client-item">
-          <img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/SP_Group_logo.svg.png" alt="SP Group" loading="lazy" />
-        </div>
-        <div class="client-item">
-          <img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/NDP%2B2023%2BLogo.png" alt="NDP 2023" loading="lazy" />
-        </div>
-        <div class="client-item">
-          <img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/Jalan-Besar-Town-Council-Logo.jpg" alt="Jalan Besar Town Council" loading="lazy" />
-        </div>
-        <div class="client-item">
-          <img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/Singapore%20Police%20Force%20Crest%20Twitter%20Card%20Image.png" alt="Singapore Police Force" loading="lazy" />
+        <div class="logo-track" aria-hidden="true">
+          <!-- first copy -->
+          <div class="client-item"><img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/unilever-958x575.png" alt="Unilever" /></div>
+          <div class="client-item"><img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/FedEx-logo-1.webp" alt="FedEx" /></div>
+          <div class="client-item"><img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/conrad-hotels3274.logowik.com.webp" alt="Conrad Hotels" /></div>
+          <div class="client-item"><img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/Alan-Walker-logo_1.svg" alt="Alan Walker" /></div>
+          <div class="client-item"><img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/Cordlife_Group_Limited_Logo.jpg" alt="Cordlife" /></div>
+          <div class="client-item"><img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/NUS%20Logo%20Full%20Colour%204C%20%5BConverted%5D.jpg" alt="NUS" /></div>
+          <div class="client-item"><img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/smu-logo.png" alt="SMU" /></div>
+          <div class="client-item"><img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/SP_Group_logo.svg.png" alt="SP Group" /></div>
+          <div class="client-item"><img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/NDP%2B2023%2BLogo.png" alt="NDP 2023" /></div>
+          <div class="client-item"><img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/Jalan-Besar-Town-Council-Logo.jpg" alt="Jalan Besar Town Council" /></div>
+          <div class="client-item"><img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/Singapore%20Police%20Force%20Crest%20Twitter%20Card%20Image.png" alt="Singapore Police Force" /></div>
+          <!-- duplicate for seamless loop -->
+          <div class="client-item"><img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/unilever-958x575.png" alt="" /></div>
+          <div class="client-item"><img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/FedEx-logo-1.webp" alt="" /></div>
+          <div class="client-item"><img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/conrad-hotels3274.logowik.com.webp" alt="" /></div>
+          <div class="client-item"><img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/Alan-Walker-logo_1.svg" alt="" /></div>
+          <div class="client-item"><img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/Cordlife_Group_Limited_Logo.jpg" alt="" /></div>
+          <div class="client-item"><img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/NUS%20Logo%20Full%20Colour%204C%20%5BConverted%5D.jpg" alt="" /></div>
+          <div class="client-item"><img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/smu-logo.png" alt="" /></div>
+          <div class="client-item"><img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/SP_Group_logo.svg.png" alt="" /></div>
+          <div class="client-item"><img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/NDP%2B2023%2BLogo.png" alt="" /></div>
+          <div class="client-item"><img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/Jalan-Besar-Town-Council-Logo.jpg" alt="" /></div>
+          <div class="client-item"><img class="client-logo-img" src="BRAND%20ASSETS/BRAND%20LOGO/Singapore%20Police%20Force%20Crest%20Twitter%20Card%20Image.png" alt="" /></div>
         </div>
       </div>
 
