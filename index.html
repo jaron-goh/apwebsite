@@ -1510,6 +1510,33 @@
 
     /* ─── HOW WE WORK ─── */
 
+    #process {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .process-bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      opacity: 0.3;
+    }
+
+    .process-bg-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+
+    #process .section-inner {
+      position: relative;
+      z-index: 2;
+    }
+
     .process-header {
       margin-bottom: 4rem;
     }
@@ -2371,6 +2398,10 @@
 
   <!-- ─── HOW WE WORK ─── -->
   <section id="process" class="section-border">
+    <video class="process-bg-video" autoplay muted loop playsinline preload="auto">
+      <source src="BRAND%20ASSETS/howwework_web.mp4" type="video/mp4" />
+    </video>
+    <div class="process-bg-overlay"></div>
     <div class="section-inner">
       <div class="process-header">
         <span class="label">The Process</span>
