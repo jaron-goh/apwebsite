@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="AI-powered creative production studio in Singapore. AI UGC, generative video, virtual staging, and corporate production." />
   <meta name="twitter:image" content="https://authoritativeproductions.com/BRAND%20ASSETS/og-image.jpg" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://connect.facebook.net https://snap.licdn.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://www.google-analytics.com https://www.facebook.com https://px.ads.linkedin.com https://www.clarity.ms; media-src 'self'; connect-src https://formspree.io https://www.google-analytics.com https://analytics.google.com https://www.clarity.ms https://www.facebook.com; form-action https://formspree.io; frame-src https://www.googletagmanager.com; frame-ancestors 'none'; upgrade-insecure-requests;" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://connect.facebook.net https://snap.licdn.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://www.google-analytics.com https://www.facebook.com https://px.ads.linkedin.com https://www.clarity.ms; media-src 'self'; connect-src 'self' https://formspree.io https://www.google-analytics.com https://analytics.google.com https://www.clarity.ms https://www.facebook.com; form-action https://formspree.io; frame-src https://www.googletagmanager.com; frame-ancestors 'none'; upgrade-insecure-requests;" />
   <link rel="icon" type="image/png" href="BRAND%20ASSETS/LOGO3BLK.png" />
   <link rel="apple-touch-icon" href="BRAND%20ASSETS/LOGO3BLK.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -87,7 +87,37 @@
       font-weight: 700;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      opacity: 0.45;
+      opacity: 0.55;
+    }
+
+    /* ─── Screen-reader only (visually hidden) ─── */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* ─── Keyboard focus indicators ─── */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    [role="button"]:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.7);
+      outline-offset: 3px;
+    }
+
+    a:focus:not(:focus-visible),
+    button:focus:not(:focus-visible),
+    [role="button"]:focus:not(:focus-visible) {
+      outline: none;
     }
 
     /* ─── Sections ─── */
@@ -212,7 +242,7 @@
       font-weight: 700;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      opacity: 0.55;
+      opacity: 0.65;
       transition: opacity 0.2s;
     }
 
@@ -340,7 +370,7 @@
       font-size: 0.7rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      opacity: 0.4;
+      opacity: 0.55;
       max-width: 48rem;
       line-height: 2;
     }
@@ -501,8 +531,17 @@
     .service-desc {
       font-size: 0.68rem;
       line-height: 1.9;
-      opacity: 0.45;
+      opacity: 0.6;
       letter-spacing: 0.05em;
+    }
+
+    .service-outcome {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      opacity: 0.7;
+      margin-top: 1.25rem;
+      line-height: 1.8;
     }
 
     .service-tools {
@@ -932,7 +971,7 @@
     .about-text {
       font-size: 0.72rem;
       line-height: 2;
-      opacity: 0.5;
+      opacity: 0.6;
       letter-spacing: 0.04em;
     }
 
@@ -1481,7 +1520,7 @@
     .cta-bridge-body {
       font-size: 0.7rem;
       letter-spacing: 0.08em;
-      opacity: 0.45;
+      opacity: 0.6;
       margin-top: 0.5rem;
       line-height: 1.8;
     }
@@ -1627,7 +1666,7 @@
     .process-card-desc {
       font-size: 0.68rem;
       line-height: 1.9;
-      opacity: 0.45;
+      opacity: 0.6;
       letter-spacing: 0.05em;
       flex: 1;
     }
@@ -1788,11 +1827,29 @@
       margin-top: 2.5rem;
       font-size: 0.68rem;
       line-height: 1.9;
-      opacity: 0.4;
+      opacity: 0.55;
       letter-spacing: 0.04em;
       max-width: 680px;
       border-top: 1px solid var(--dim);
       padding-top: 2rem;
+    }
+
+    .contact-urgency {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.4;
+      margin-bottom: 3rem;
+      margin-top: -2.5rem;
+    }
+
+    .form-reassurance {
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.3;
+      margin-top: 0.5rem;
     }
 
     /* ─── FOOTER: shared typography ─── */
@@ -1800,14 +1857,14 @@
       font-size: 0.6rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      opacity: 0.3;
+      opacity: 0.45;
     }
 
     .footer-tagline {
       font-size: 0.55rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      opacity: 0.2;
+      opacity: 0.4;
     }
 
     .footer-nav a {
@@ -1817,7 +1874,7 @@
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      opacity: 0.3;
+      opacity: 0.45;
       transition: opacity 0.2s;
     }
 
@@ -1831,7 +1888,7 @@
       font-size: 0.6rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      opacity: 0.3;
+      opacity: 0.45;
       transition: opacity 0.2s;
     }
 
@@ -1868,6 +1925,28 @@
         flex-direction: column;
         align-items: flex-end;
         gap: 0.5rem;
+      }
+    }
+
+    /* ─── Mobile tap targets ─── */
+    @media (max-width: 900px) {
+      .nav-cta {
+        min-height: 44px;
+      }
+      .contact-form input,
+      .contact-form select,
+      .contact-form textarea {
+        min-height: 44px;
+      }
+      .form-submit {
+        min-height: 48px;
+      }
+      .mid-cta-link,
+      .footer-nav a,
+      .cta-bridge-btn {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
       }
     }
 
@@ -2187,10 +2266,11 @@
       <span class="label">AI Creative Studio &nbsp;·&nbsp; Singapore</span>
     </div>
 
-    <h1 class="hero-headline">
+    <h1 class="sr-only">AI Creative Production Studio in Singapore — AI UGC, Generative Video &amp; Virtual Staging</h1>
+    <p class="hero-headline" aria-hidden="true">
       <span class="line-1">Authoritative</span><br />
       <span class="line-2 indent">Productions</span>
-    </h1>
+    </p>
     <p class="hero-est">Est. 2025</p>
 
     <div class="hero-meta">
@@ -2233,7 +2313,7 @@
 
   <!-- ─── SERVICES ─── -->
   <section id="services" class="section-border">
-    <video class="services-bg-video" autoplay muted loop playsinline preload="none">
+    <video class="services-bg-video" muted loop playsinline preload="none">
       <source src="BRAND%20ASSETS/whatwedo.mp4" type="video/mp4">
     </video>
     <div class="section-inner">
@@ -2249,7 +2329,9 @@
           <p class="service-desc">
             Digital presenters and UGC-style content without the talent fees, scheduling, or usage restrictions.
             Consistent, on-brand, and ready to scale across any campaign.
+            Ideal for social media advertising, product launches, and always-on content calendars where speed and consistency matter more than traditional talent bookings.
           </p>
+          <p class="service-outcome">→ Scale content production without scaling headcount or talent budgets.</p>
           <div class="service-tools">
             <span class="service-tool-tag">HeyGen</span>
             <span class="service-tool-tag">Midjourney</span>
@@ -2266,7 +2348,9 @@
           <p class="service-desc">
             Campaign films, social ads, and branded video — concept to delivery — produced with generative AI at a
             fraction of the traditional timeline and budget.
+            Used by marketing teams across Singapore for brand films, social campaigns, and internal communications that need to look premium without the premium timeline.
           </p>
+          <p class="service-outcome">→ Go from concept to campaign in days, not weeks.</p>
           <div class="service-tools">
             <span class="service-tool-tag">Kling 3.0</span>
             <span class="service-tool-tag">Higgsfield</span>
@@ -2285,7 +2369,9 @@
           <p class="service-desc">
             Photorealistic virtual staging for property listings and commercial spaces. Furnish, style, and present any
             room — no furniture, no photographer, no wait.
+            Trusted by property developers and agents across Singapore's landed and luxury segments to accelerate sales cycles and reduce staging costs.
           </p>
+          <p class="service-outcome">→ Sell spaces before they're built — at a fraction of traditional staging cost.</p>
           <div class="service-tools">
             <span class="service-tool-tag">Midjourney</span>
             <span class="service-tool-tag">Adobe Suite</span>
@@ -2300,7 +2386,9 @@
           <p class="service-desc">
             Traditional photo, video, and event production — backed by 9+ years of blue-chip delivery. Full crew, full
             service, from brief to final cut.
+            From annual reports and town halls to investor briefings and conference coverage — delivered with the professionalism that regulated industries demand.
           </p>
+          <p class="service-outcome">→ Broadcast-grade delivery with the reliability of a 9-year track record.</p>
           <div class="service-tools">
             <span class="service-tool-tag">Full Crew</span>
             <span class="service-tool-tag">Adobe Suite</span>
@@ -2419,7 +2507,7 @@
 
   <!-- ─── HOW WE WORK ─── -->
   <section id="process" class="section-border">
-    <video class="process-bg-video" autoplay muted loop playsinline preload="none">
+    <video class="process-bg-video" muted loop playsinline preload="none">
       <source src="BRAND%20ASSETS/howwework_web.mp4" type="video/mp4" />
     </video>
     <div class="process-bg-overlay"></div>
@@ -2444,8 +2532,7 @@
           </div>
           <h3 class="process-card-name">Discovery</h3>
           <p class="process-card-desc">
-            Brief + objectives. You come with a goal — we handle the brief-to-strategy translation.
-            One call is all it takes to scope the project, align on deliverables, and lock a timeline.
+            You come with a goal — we handle the rest. One 30-minute call to scope the project, align on deliverables, and lock a timeline. You'll receive a transparent quote within 24 hours.
           </p>
           <div class="process-flow">
             <span class="process-flow-tag">Brief</span>
@@ -2494,8 +2581,7 @@
           </div>
           <h3 class="process-card-name">Delivery</h3>
           <p class="process-card-desc">
-            Final assets, revisions included, fast turnaround. Enterprise clients get the compliance
-            and sign-off process they require.
+            Final assets with two rounds of revisions included. Enterprise clients get the compliance sign-off process they require, including NDA and IP protection as standard.
           </p>
           <div class="process-delivery-stat">
             <span class="process-stat-num">5</span>
@@ -2619,8 +2705,7 @@
 
       <!-- Industry context -->
       <p class="clients-context">
-        From regulated financial institutions to government agencies — we understand the compliance
-        expectations and brand standards that come with enterprise work.
+        Financial services, government, education, real estate, consumer brands, and tech — we understand the compliance expectations, brand standards, and data protection requirements that come with enterprise work. All engagements include NDA and IP protection as standard.
       </p>
 
       <!-- ─── Testimonial ─── -->
@@ -2700,6 +2785,7 @@
         <span class="muted">produce</span><br />
         smarter?
       </h2>
+      <p class="contact-urgency">Most projects go live within 5 business days.</p>
       <form class="contact-form" id="contact-form" action="https://formspree.io/f/mojnbvkn" method="POST">
         <!-- Formspree spam honeypot -->
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
@@ -2748,6 +2834,7 @@
         <button class="form-submit" type="submit" id="cf-submit">
           Get in Touch <span aria-hidden="true">→</span>
         </button>
+        <p class="form-reassurance">We respond within 1 business day. Your information is kept confidential.</p>
       </form>
     </div>
   </section>
@@ -2782,12 +2869,15 @@
       const coarsePointer = window.matchMedia('(hover: none), (pointer: coarse)').matches;
 
       const hero = document.getElementById('hero');
+      if (!hero) return;
+
       const video = hero.querySelector('.hero-video');
       const headline = hero.querySelector('.hero-headline');
       const estTag = hero.querySelector('.hero-est');
       const eyebrow = hero.querySelector('.hero-eyebrow');
       const dot = document.querySelector('.cursor-dot');
       const ring = document.querySelector('.cursor-ring');
+      if (!video || !headline) return;
 
       /* ── Lerp helper ── */
       const lerp = (a, b, t) => a + (b - a) * t;
@@ -2845,7 +2935,7 @@
       }
 
       /* ── Custom cursor: track mouse globally ── */
-      if (!coarsePointer) {
+      if (!coarsePointer && dot && ring) {
         document.addEventListener('mousemove', function (e) {
           mx = e.clientX;
           my = e.clientY;
@@ -2890,7 +2980,7 @@
         }
 
         /* Custom cursor */
-        if (!coarsePointer && cursorVisible) {
+        if (!coarsePointer && cursorVisible && dot && ring) {
           dx = lerp(dx, mx, 0.88);
           dy = lerp(dy, my, 0.88);
           rx = lerp(rx, mx, 0.10);
@@ -3060,6 +3150,36 @@
 
   <!-- ─── Logo marquee: pause on hover (desktop) and touch (mobile) ─── -->
   <script>
+    (function () {
+      var bgVideos = document.querySelectorAll('.services-bg-video, .process-bg-video');
+      if (!bgVideos.length) return;
+
+      function playVideo(video) {
+        if (video.readyState === 0) video.load();
+        var promise = video.play();
+        if (promise && typeof promise.catch === 'function') promise.catch(function () { });
+      }
+
+      if (!('IntersectionObserver' in window)) {
+        bgVideos.forEach(function (video) { playVideo(video); });
+        return;
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            playVideo(entry.target);
+          } else {
+            entry.target.pause();
+          }
+        });
+      }, { threshold: 0.2 });
+
+      bgVideos.forEach(function (video) { observer.observe(video); });
+    }());
+  </script>
+
+  <script>
     document.querySelectorAll('.logo-track').forEach(function (track) {
       track.addEventListener('touchstart', function () { track.classList.add('is-paused'); }, { passive: true });
       track.addEventListener('touchend', function () { track.classList.remove('is-paused'); }, { passive: true });
@@ -3073,6 +3193,7 @@
       var form = document.getElementById('contact-form');
       var status = document.getElementById('cf-status');
       var submit = document.getElementById('cf-submit');
+      if (!form || !status || !submit) return;
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
