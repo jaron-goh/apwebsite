@@ -4,7 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Authoritative Productions</title>
-  <link rel="icon" type="image/png" href="BRAND ASSETS/LOGO3BLK.png" />
+  <meta name="description" content="Authoritative Productions is preparing a new site experience." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;" />
+  <link rel="icon" type="image/png" href="BRAND%20ASSETS/LOGO3BLK.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -26,7 +30,6 @@
       color: var(--white);
       font-family: 'IBM Plex Mono', monospace;
       overflow-x: hidden;
-      touch-action: none; /* let JS own all touch gestures for parallax */
     }
 
     /* Re-enable native touch on interactive elements */
@@ -384,6 +387,7 @@
     const headline = document.querySelector('.headline-block');
     const dot      = document.querySelector('.cursor-dot');
     const ring     = document.querySelector('.cursor-ring');
+    if (!video || !headline) return;
 
     const lerp = (a, b, t) => a + (b - a) * t;
 
@@ -400,20 +404,20 @@
       }, { passive: true });
 
       document.addEventListener('touchmove', function (e) {
-        e.preventDefault(); // stop browser scroll from consuming the gesture
+        if (!e.touches || !e.touches.length) return;
         const t = e.touches[0];
         const nx = (t.clientX / window.innerWidth  - 0.5) * 2;
         const ny = (t.clientY / window.innerHeight - 0.5) * 2;
         tpx = nx * 10;
         tpy = ny * 7;
-      }, { passive: false });
+      }, { passive: true });
 
       document.addEventListener('touchend', function () {
         tpx = tpy = 0;
       }, { passive: true });
     }
 
-    if (!coarsePointer) {
+    if (!coarsePointer && dot && ring) {
       document.addEventListener('mousemove', function (e) {
         mx = e.clientX;
         my = e.clientY;
@@ -445,7 +449,7 @@
           'translate(' + (px * 0.28).toFixed(2) + 'px, ' + (py * 0.28).toFixed(2) + 'px)';
       }
 
-      if (!coarsePointer && cursorVisible) {
+      if (!coarsePointer && cursorVisible && dot && ring) {
         dx = lerp(dx, mx, 0.88);
         dy = lerp(dy, my, 0.88);
         rx = lerp(rx, mx, 0.10);
@@ -463,22 +467,56 @@
   </script>
 
   <script>
-    document.getElementById('preview-form').addEventListener('submit', function (e) {
-      e.preventDefault();
+    (function () {
+      var form = document.getElementById('preview-form');
       var input = document.getElementById('preview-pass');
-      if (input.value === 'AP2026') {
-        sessionStorage.setItem('ap_preview', '1');
-        window.location.href = 'index.html';
-      } else {
-        input.style.color = '#ff4444';
-        input.value = '';
-        input.placeholder = 'Incorrect';
-        setTimeout(function () {
-          input.style.color = '';
-          input.placeholder = 'Preview Access';
-        }, 2000);
+      if (!form || !input) return;
+
+      var expectedHash = '51fd988027c3311c0ec5f1682f8739014a5948e534bfc84671b72c80036f1ee5';
+
+      function toHex(buffer) {
+        return Array.from(new Uint8Array(buffer)).map(function (b) {
+          return b.toString(16).padStart(2, '0');
+        }).join('');
       }
-    });
+
+      function sha256(value) {
+        if (!window.crypto || !window.crypto.subtle || typeof TextEncoder === 'undefined') {
+          return Promise.reject(new Error('crypto_unavailable'));
+        }
+        var data = new TextEncoder().encode(value);
+        return window.crypto.subtle.digest('SHA-256', data).then(toHex);
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var value = input.value.trim();
+        if (!value) return;
+
+        sha256(value).then(function (hash) {
+          if (hash === expectedHash) {
+            window.location.href = 'index.html';
+            return;
+          }
+
+          input.style.color = '#ff4444';
+          input.value = '';
+          input.placeholder = 'Incorrect';
+          setTimeout(function () {
+            input.style.color = '';
+            input.placeholder = 'Preview Access';
+          }, 2000);
+        }).catch(function () {
+          input.style.color = '#ff4444';
+          input.value = '';
+          input.placeholder = 'Unsupported browser';
+          setTimeout(function () {
+            input.style.color = '';
+            input.placeholder = 'Preview Access';
+          }, 2000);
+        });
+      });
+    }());
   </script>
 
 </body>
